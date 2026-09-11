@@ -1,8 +1,6 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta name="robots" content="noindex, nofollow">
-
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <script src="./support.js"></script>
@@ -10,6 +8,8 @@
 <body>
 <x-dc>
 <helmet>
+<script src="./image-slot.js"></script>
+<template id="__bundler_thumbnail" data-bg-color="#2F6B3C"><svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><rect width="100" height="100" fill="#2F6B3C"/><circle cx="50" cy="44" r="17" fill="#fff"/><rect x="47" y="30" width="3" height="44" fill="#E0A526"/><path d="M50 32h16l-16 9z" fill="#E0A526"/></svg></template>
 <style>
 body{margin:0}
 a{color:inherit}
@@ -17,19 +17,20 @@ a:hover{color:#2F6B3C}
 :focus-visible{outline:3px solid #E0A526;outline-offset:2px}
 html{scroll-behavior:smooth}
 </style>
-<template id="__bundler_thumbnail"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><rect width="100" height="100" fill="#2F6B3C"/><circle cx="50" cy="44" r="17" fill="#fff"/><rect x="47" y="30" width="3" height="44" fill="#E0A526"/><path d="M50 32h16l-16 9z" fill="#E0A526"/></svg></template>
 </helmet>
 <div style="background:#fff;color:#1B2A33;font-family:'Hiragino Sans','Hiragino Kaku Gothic ProN','Yu Gothic',sans-serif;font-size:17px;line-height:1.85;-webkit-font-smoothing:antialiased">
 
   <header style="position:sticky;top:0;z-index:40;background:#fff;border-bottom:1px solid #D5DDE0;display:flex;align-items:center;flex-wrap:wrap;gap:.8rem 1.2rem;padding:.8rem 1.3rem">
     <div style="font-weight:800;font-size:1rem;color:#2F6B3C;white-space:nowrap;letter-spacing:.02em">能代カントリークラブ</div>
     <nav style="display:flex;flex-wrap:wrap;gap:.6rem 1.2rem;font-size:.86rem;margin-left:auto;font-weight:600">
-      <a href="about.html" style="text-decoration:none">クラブ概要</a>
-      <a href="course.html" style="text-decoration:none">コースガイド</a>
-      <a href="price.html" style="text-decoration:none">料金プラン</a>
-      <a href="members.html" style="text-decoration:none">友の会</a>
-      <a href="competition.html" style="text-decoration:none">競技会</a>
-      <a href="access.html" style="text-decoration:none">アクセス・宿泊</a>
+      <a href="#" style="text-decoration:none">魅力</a>
+      <a href="#" style="text-decoration:none">料金・プラン</a>
+      <a href="#" style="text-decoration:none">コース</a>
+      <a href="#" style="text-decoration:none">レストラン</a>
+      <a href="#" style="text-decoration:none">施設</a>
+      <a href="#" style="text-decoration:none">アクセス</a>
+      <a href="#" style="text-decoration:none">宿泊</a>
+      <a href="#" style="text-decoration:none">お知らせ</a>
     </nav>
     <div style="display:flex;flex-wrap:wrap;gap:.5rem">
       <a href="tel:0185-88-8732" style="text-decoration:none;font-size:.85rem;font-weight:700;padding:.6rem 1.1rem;border-radius:6px;border:2px solid #2F6B3C;color:#2F6B3C;white-space:nowrap" style-hover="background:#EAF2EB">0185-88-8732</a>
@@ -37,19 +38,21 @@ html{scroll-behavior:smooth}
     </div>
   </header>
 
-  <div style="background:#E6EEF1;padding:clamp(2.5rem,5vw,4rem) clamp(1.3rem,4vw,3rem) clamp(3rem,6vw,4.5rem)">
-    <div style="max-width:1120px;margin:0 auto;display:grid;gap:clamp(2rem,4vw,3.5rem);grid-template-columns:repeat(auto-fit,minmax(320px,1fr));align-items:center">
-      <div style="order:{{ textOrder }}">
-        <h1 style="font-size:clamp(1.8rem,5.4vw,2.9rem);font-weight:800;line-height:1.45;margin:0">食事つき<span style="color:#2F6B3C;font-size:1.25em">5,800円</span>から、<br>海風のコースへ。</h1>
-        <p style="margin:1rem 0 0;font-size:1rem;color:#5D6B74">秋田・八峰町の18ホール。雨の日も一日中フェアウェイに乗り入れできるので、歩く距離が短く楽に回れます。</p>
-        <div style="display:flex;flex-wrap:wrap;gap:.5rem;margin-top:1.5rem">
-          <span style="background:#fff;border:1px solid #2F6B3C;color:#2F6B3C;font-size:.83rem;font-weight:700;padding:.35rem .8rem;border-radius:999px">初心者歓迎</span>
-          <span style="background:#fff;border:1px solid #2F6B3C;color:#2F6B3C;font-size:.83rem;font-weight:700;padding:.35rem .8rem;border-radius:999px">レンタル一式あり</span>
-          <span style="background:#fff;border:1px solid #2F6B3C;color:#2F6B3C;font-size:.83rem;font-weight:700;padding:.35rem .8rem;border-radius:999px">終日カート乗り入れOK</span>
-          <span style="background:#fff;border:1px solid #2F6B3C;color:#2F6B3C;font-size:.83rem;font-weight:700;padding:.35rem .8rem;border-radius:999px">能代東ICから15分</span>
-        </div>
+  <div style="position:relative;height:clamp(460px,64vh,620px);overflow:hidden;background:#0C1A12">
+    <image-slot id="top-hero" shape="rect" placeholder="横位置・晴天のフェアウェイ。手前にカート、奥に松林と空。人物が小さく入ると尺度が伝わります"></image-slot>
+    <div style="position:absolute;inset:0;pointer-events:none;background:linear-gradient(to top,rgba(12,26,18,.88) 0%,rgba(12,26,18,.55) 38%,rgba(12,26,18,.05) 72%)"></div>
+    <div style="position:absolute;left:0;right:0;bottom:0;padding:clamp(1.5rem,4vw,2.8rem);display:flex;flex-wrap:wrap;align-items:flex-end;gap:1.5rem 2.2rem;pointer-events:none">
+      <div style="flex:1 1 420px">
+        <div style="display:inline-block;background:#E0A526;color:#fff;font-weight:800;font-size:.85rem;padding:.35rem .9rem;border-radius:999px;margin-bottom:1rem">昼食つき 8,500円から（平日ゲスト）</div>
+        <h1 style="margin:0;color:#fff;font-size:clamp(2rem,5.4vw,3.6rem);font-weight:800;line-height:1.34;text-shadow:0 2px 24px rgba(0,0,0,.45)">海風のコースへ、<br>手ぶらで。</h1>
+        <p style="margin:.9rem 0 0;color:#fff;font-size:1rem;line-height:1.8;max-width:30em;text-shadow:0 1px 14px rgba(0,0,0,.6)">秋田・八峰町の18ホール。雨の日も一日中フェアウェイに乗り入れできます。</p>
       </div>
-      <div style="background:repeating-linear-gradient(135deg,rgba(47,107,60,.07) 0 10px,transparent 10px 20px),#EAF2EB;border:1px solid #D5DDE0;color:#5D6B74;font-size:12px;line-height:1.7;display:flex;align-items:center;justify-content:center;text-align:center;padding:1.1rem;border-radius:6px;min-height:280px">写真：晴れた日のフェアウェイと乗用カート。明るく、プレーヤーが楽しそうに写っている横位置。</div>
+      <div style="display:flex;flex-direction:column;gap:.45rem">
+        <span style="color:#fff;font-size:.83rem;font-weight:700;text-shadow:0 1px 10px rgba(0,0,0,.7)">初心者歓迎</span>
+        <span style="color:#fff;font-size:.83rem;font-weight:700;text-shadow:0 1px 10px rgba(0,0,0,.7)">レンタル一式あり</span>
+        <span style="color:#fff;font-size:.83rem;font-weight:700;text-shadow:0 1px 10px rgba(0,0,0,.7)">終日カート乗り入れOK</span>
+        <span style="color:#fff;font-size:.83rem;font-weight:700;text-shadow:0 1px 10px rgba(0,0,0,.7)">能代東ICから15分</span>
+      </div>
     </div>
   </div>
 
@@ -57,15 +60,40 @@ html{scroll-behavior:smooth}
     <div style="background:#E0A526;color:#fff;font-weight:700;padding:.9rem 1.3rem;text-align:center;font-size:.95rem">10月17日（土）鍋祭りコンペ 参加者受付中　<a href="#" style="color:#fff">詳しく見る</a></div>
   </sc-if>
 
+  <section style="background:#EAF2EB;padding:clamp(3.8rem,6vw,5rem) clamp(1.3rem,4vw,3rem)">
+    <div style="max-width:1120px;margin:0 auto">
+      <h2 style="font-size:clamp(1.35rem,3vw,1.9rem);font-weight:800;margin:0 0 .6rem;line-height:1.55">このゴルフ場の魅力</h2>
+      <p style="color:#5D6B74;font-size:.95rem;margin:0 0 2rem;max-width:38em">1965年の開場から60年。休業を経て、もう一度ここに立てるようになりました。</p>
+      <div style="display:grid;gap:1.1rem;grid-template-columns:repeat(auto-fit,minmax(230px,1fr))">
+        <a href="#" style="text-decoration:none;color:inherit;background:#fff;border:1px solid #D5DDE0;border-radius:10px;overflow:hidden;display:block" style-hover="border-color:#2F6B3C">
+          <div style="position:relative;min-height:160px"><image-slot id="top-app-1" shape="rect" placeholder="再建の風景。整備中のコース、または開場当時の写真"></image-slot></div>
+          <div style="padding:1rem 1.1rem 1.2rem"><h3 style="font-size:.98rem;font-weight:800;margin:0 0 .3rem;color:#1F4A29">歴史と再建への思い</h3><p style="font-size:.86rem;color:#5D6B74;margin:0">1965年開場。休業から再建までの歩み。</p></div>
+        </a>
+        <a href="#" style="text-decoration:none;color:inherit;background:#fff;border:1px solid #D5DDE0;border-radius:10px;overflow:hidden;display:block" style-hover="border-color:#2F6B3C">
+          <div style="position:relative;min-height:160px"><image-slot id="top-app-2" shape="rect" placeholder="プレーヤーの表情が見えるカット"></image-slot></div>
+          <div style="padding:1rem 1.1rem 1.2rem"><h3 style="font-size:.98rem;font-weight:800;margin:0 0 .3rem;color:#1F4A29">コンセプト</h3><p style="font-size:.86rem;color:#5D6B74;margin:0">地域に根差した、ゴルファーの「ホーム」。</p></div>
+        </a>
+        <a href="#" style="text-decoration:none;color:inherit;background:#fff;border:1px solid #D5DDE0;border-radius:10px;overflow:hidden;display:block" style-hover="border-color:#2F6B3C">
+          <div style="position:relative;min-height:160px"><image-slot id="top-app-3" shape="rect" placeholder="松林とフェアウェイ。カート乗り入れが分かるカット"></image-slot></div>
+          <div style="padding:1rem 1.1rem 1.2rem"><h3 style="font-size:.98rem;font-weight:800;margin:0 0 .3rem;color:#1F4A29">コースの特徴</h3><p style="font-size:.86rem;color:#5D6B74;margin:0">砂地で水はけがよく、終日カート乗り入れ可。</p></div>
+        </a>
+        <a href="#" style="text-decoration:none;color:inherit;background:#fff;border:1px solid #D5DDE0;border-radius:10px;overflow:hidden;display:block" style-hover="border-color:#2F6B3C">
+          <div style="position:relative;min-height:160px"><image-slot id="top-app-4" shape="rect" placeholder="夕景、または日本海が見える一枚"></image-slot></div>
+          <div style="padding:1rem 1.1rem 1.2rem"><h3 style="font-size:.98rem;font-weight:800;margin:0 0 .3rem;color:#1F4A29">絶景景観</h3><p style="font-size:.86rem;color:#5D6B74;margin:0">日本海と白神山地に挟まれたロケーション。</p></div>
+        </a>
+      </div>
+    </div>
+  </section>
+
   <section style="padding:clamp(3.8rem,6vw,5rem) clamp(1.3rem,4vw,3rem)">
     <div style="max-width:1120px;margin:0 auto">
       <h2 style="font-size:clamp(1.35rem,3vw,1.9rem);font-weight:800;margin:0 0 .6rem;line-height:1.55">料金の目安</h2>
-      <p style="color:#5D6B74;font-size:.95rem;margin:0 0 2rem;max-width:38em">表示は税込・昼食付きの目安です。季節と曜日で変わりますので、確定金額は予約ページでご確認ください。</p>
+      <p style="color:#5D6B74;font-size:.95rem;margin:0 0 2rem;max-width:38em">1ラウンドセルフプレー、昼食つき（1,100円分）の税込料金です。季節により変動する場合がありますので、確定金額は予約時にご確認ください。</p>
       <div style="display:grid;gap:1.1rem;grid-template-columns:repeat(auto-fit,minmax(240px,1fr))">
         <div style="border:2px solid #2F6B3C;background:#EAF2EB;border-radius:10px;padding:1.6rem 1.4rem;display:flex;flex-direction:column">
-          <div style="font-size:.85rem;font-weight:800;color:#2F6B3C">水曜・木曜</div>
-          <div style="font-size:2.2rem;font-weight:800;line-height:1.25;margin:.4rem 0 .1rem">5,800<small style="font-size:.95rem;font-weight:700;color:#5D6B74">円〜</small></div>
-          <div style="font-size:.86rem;color:#5D6B74">シニア＆レディースデー</div>
+          <div style="font-size:.85rem;font-weight:800;color:#2F6B3C">友の会（メンバー）</div>
+          <div style="font-size:2.2rem;font-weight:800;line-height:1.25;margin:.4rem 0 .1rem">6,900<small style="font-size:.95rem;font-weight:700;color:#5D6B74">円</small></div>
+          <div style="font-size:.86rem;color:#5D6B74">平日・土日祝とも同額</div>
           <ul style="list-style:none;margin:1rem 0 0;padding:0;font-size:.88rem">
             <li style="padding-left:1.3rem;position:relative;margin-bottom:.3rem"><span style="position:absolute;left:0;color:#2F6B3C;font-weight:800">✓</span>昼食付き</li>
             <li style="padding-left:1.3rem;position:relative;margin-bottom:.3rem"><span style="position:absolute;left:0;color:#2F6B3C;font-weight:800">✓</span>セルフプレー</li>
@@ -73,18 +101,18 @@ html{scroll-behavior:smooth}
           </ul>
         </div>
         <div style="border:1px solid #D5DDE0;border-radius:10px;padding:1.6rem 1.4rem;display:flex;flex-direction:column">
-          <div style="font-size:.85rem;font-weight:800;color:#2F6B3C">平日</div>
-          <div style="font-size:2.2rem;font-weight:800;line-height:1.25;margin:.4rem 0 .1rem">8,500<small style="font-size:.95rem;font-weight:700;color:#5D6B74">円〜</small></div>
+          <div style="font-size:.85rem;font-weight:800;color:#2F6B3C">ゲスト・平日</div>
+          <div style="font-size:2.2rem;font-weight:800;line-height:1.25;margin:.4rem 0 .1rem">8,500<small style="font-size:.95rem;font-weight:700;color:#5D6B74">円</small></div>
           <div style="font-size:.86rem;color:#5D6B74">通常プレー</div>
           <ul style="list-style:none;margin:1rem 0 0;padding:0;font-size:.88rem">
             <li style="padding-left:1.3rem;position:relative;margin-bottom:.3rem"><span style="position:absolute;left:0;color:#2F6B3C;font-weight:800">✓</span>昼食付き</li>
             <li style="padding-left:1.3rem;position:relative;margin-bottom:.3rem"><span style="position:absolute;left:0;color:#2F6B3C;font-weight:800">✓</span>セルフプレー</li>
-            <li style="padding-left:1.3rem;position:relative;margin-bottom:.3rem"><span style="position:absolute;left:0;color:#2F6B3C;font-weight:800">✓</span>早朝・薄暮プランあり</li>
+            <li style="padding-left:1.3rem;position:relative;margin-bottom:.3rem"><span style="position:absolute;left:0;color:#2F6B3C;font-weight:800">✓</span>早朝・夕暮なら 6,600円</li>
           </ul>
         </div>
         <div style="border:1px solid #D5DDE0;border-radius:10px;padding:1.6rem 1.4rem;display:flex;flex-direction:column">
-          <div style="font-size:.85rem;font-weight:800;color:#2F6B3C">土日祝</div>
-          <div style="font-size:2.2rem;font-weight:800;line-height:1.25;margin:.4rem 0 .1rem">11,000<small style="font-size:.95rem;font-weight:700;color:#5D6B74">円〜</small></div>
+          <div style="font-size:.85rem;font-weight:800;color:#2F6B3C">ゲスト・土日祝</div>
+          <div style="font-size:2.2rem;font-weight:800;line-height:1.25;margin:.4rem 0 .1rem">11,000<small style="font-size:.95rem;font-weight:700;color:#5D6B74">円</small></div>
           <div style="font-size:.86rem;color:#5D6B74">通常プレー</div>
           <ul style="list-style:none;margin:1rem 0 0;padding:0;font-size:.88rem">
             <li style="padding-left:1.3rem;position:relative;margin-bottom:.3rem"><span style="position:absolute;left:0;color:#2F6B3C;font-weight:800">✓</span>昼食付き</li>
@@ -93,8 +121,8 @@ html{scroll-behavior:smooth}
           </ul>
         </div>
       </div>
-      <p style="font-size:.84rem;color:#5D6B74;margin:1.2rem 0 0">※ 平日・土日祝はゲスト料金（1Rセルフ・お食事つき）です。友の会メンバーは全日6,900円。2サム・3サムの割増条件は料金ページに記載しています。</p>
-      <a href="price.html" style="display:inline-block;margin-top:1.6rem;font-weight:700;color:#2F6B3C;border-bottom:2px solid #2F6B3C;text-decoration:none;padding-bottom:2px">料金・プランをすべて見る</a>
+      <p style="font-size:.84rem;color:#5D6B74;margin:1.2rem 0 0">※ ジュニア（18歳以下）は500円。ハローキャディご利用でプレー料金から1,000円引き。ハーフスルー・追加ハーフや割増の条件は料金プランページに掲載しています。</p>
+      <a href="#" style="display:inline-block;margin-top:1.6rem;font-weight:700;color:#2F6B3C;border-bottom:2px solid #2F6B3C;text-decoration:none;padding-bottom:2px">料金・プランをすべて見る</a>
     </div>
   </section>
 
@@ -120,8 +148,37 @@ html{scroll-behavior:smooth}
   </section>
 
   <section style="padding:clamp(3.8rem,6vw,5rem) clamp(1.3rem,4vw,3rem)">
+    <div style="max-width:1120px;margin:0 auto">
+      <h2 style="font-size:clamp(1.35rem,3vw,1.9rem);font-weight:800;margin:0 0 .6rem;line-height:1.55">レストラン</h2>
+      <p style="color:#5D6B74;font-size:.95rem;margin:0 0 2rem;max-width:38em">プレー料金に含まれる昼食は、地元の食材を使った日替わりです。コンペの表彰式やパーティーにも対応しています。</p>
+      <div style="display:grid;gap:1.1rem;grid-template-columns:repeat(auto-fit,minmax(220px,1fr))">
+        <div style="position:relative;min-height:220px;border-radius:10px;overflow:hidden"><image-slot id="top-rest-1" shape="rect" placeholder="看板メニューの料理写真。寄りで湯気や質感が伝わるもの"></image-slot></div>
+        <div style="position:relative;min-height:220px;border-radius:10px;overflow:hidden"><image-slot id="top-rest-2" shape="rect" placeholder="定食・セットの全景。ボリュームが伝わるもの"></image-slot></div>
+        <div style="position:relative;min-height:220px;border-radius:10px;overflow:hidden"><image-slot id="top-rest-3" shape="rect" placeholder="レストラン内観。窓の外にコースが見えると理想的"></image-slot></div>
+      </div>
+      <div style="display:grid;gap:1.4rem;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));margin-top:1.8rem">
+        <div>
+          <h3 style="font-size:1rem;font-weight:800;margin:0 0 .4rem;color:#1F4A29">昼食はプレー料金に込み</h3>
+          <p style="font-size:.9rem;color:#5D6B74;margin:0">追加料金なしでお召し上がりいただけます。数種類からお選びいただけます。</p>
+        </div>
+        <div>
+          <h3 style="font-size:1rem;font-weight:800;margin:0 0 .4rem;color:#1F4A29">季節限定メニュー</h3>
+          <p style="font-size:.9rem;color:#5D6B74;margin:0">その時期の食材を使った限定の一品をご用意しています。内容は随時更新します。</p>
+        </div>
+        <div>
+          <h3 style="font-size:1rem;font-weight:800;margin:0 0 .4rem;color:#1F4A29">コンペパーティー</h3>
+          <p style="font-size:.9rem;color:#5D6B74;margin:0">表彰式に合わせたお料理とご予算のご相談を承ります。</p>
+        </div>
+      </div>
+      <a href="#" style="display:inline-block;margin-top:1.6rem;font-weight:700;color:#2F6B3C;border-bottom:2px solid #2F6B3C;text-decoration:none;padding-bottom:2px">レストランとメニューを見る</a>
+    </div>
+  </section>
+
+  <section style="background:#EAF2EB;padding:clamp(3.8rem,6vw,5rem) clamp(1.3rem,4vw,3rem)">
     <div style="max-width:1120px;margin:0 auto;display:grid;gap:clamp(1.6rem,3vw,3rem);grid-template-columns:repeat(auto-fit,minmax(320px,1fr));align-items:center">
-      <div style="background:repeating-linear-gradient(135deg,rgba(47,107,60,.07) 0 10px,transparent 10px 20px),#EAF2EB;border:1px solid #D5DDE0;color:#5D6B74;font-size:12px;line-height:1.7;display:flex;align-items:center;justify-content:center;text-align:center;padding:1.1rem;border-radius:6px;min-height:300px">写真：コース全景または俯瞰図。18ホールの広がりが分かるもの。ドローン撮影が理想。</div>
+      <div style="position:relative;min-height:300px;border-radius:6px;overflow:hidden">
+        <image-slot id="top-course" shape="rect" placeholder="コース全景または俯瞰図。18ホールの広がりが分かるもの。ドローン撮影が理想"></image-slot>
+      </div>
       <div>
         <h2 style="font-size:clamp(1.35rem,3vw,1.9rem);font-weight:800;margin:0 0 .6rem;line-height:1.55">コースのこと</h2>
         <p style="color:#5D6B74;font-size:.95rem;margin:0;max-width:38em">日本海に沿って低い松が密生し、そのまま自然のハザードになります。地形はフラットですが、海風がボールを流すので同じ番手が通用しません。</p>
@@ -131,7 +188,88 @@ html{scroll-behavior:smooth}
           <div><div style="font-size:1.8rem;font-weight:800;color:#2F6B3C">6,326</div><div style="font-size:.8rem;color:#5D6B74">ヤード（バック）</div></div>
           <div><div style="font-size:1.8rem;font-weight:800;color:#2F6B3C">69.7</div><div style="font-size:.8rem;color:#5D6B74">コースレート</div></div>
         </div>
-        <a href="course.html" style="display:inline-block;margin-top:1.6rem;font-weight:700;color:#2F6B3C;border-bottom:2px solid #2F6B3C;text-decoration:none;padding-bottom:2px">コースガイドを見る</a>
+        <a href="#" style="display:inline-block;margin-top:1.6rem;font-weight:700;color:#2F6B3C;border-bottom:2px solid #2F6B3C;text-decoration:none;padding-bottom:2px">コースガイドを見る</a>
+      </div>
+    </div>
+  </section>
+
+  <section style="padding:clamp(3.8rem,6vw,5rem) clamp(1.3rem,4vw,3rem)">
+    <div style="max-width:1120px;margin:0 auto">
+      <h2 style="font-size:clamp(1.35rem,3vw,1.9rem);font-weight:800;margin:0 0 .6rem;line-height:1.55">乗り物が、ちがう。</h2>
+      <p style="color:#5D6B74;font-size:.95rem;margin:0 0 2rem;max-width:38em">歩く距離と体力の負担を、設備で減らしました。他ではまず体験できない2台があります。</p>
+      <div style="display:grid;gap:1.1rem;grid-template-columns:repeat(auto-fit,minmax(260px,1fr))">
+        <div style="border:2px solid #2F6B3C;background:#EAF2EB;border-radius:10px;overflow:hidden">
+          <div style="position:relative;min-height:170px"><image-slot id="top-cart-g" shape="rect" placeholder="Gカート（一人乗りカート）に乗っているところ。複数台が並ぶ画も欲しい"></image-slot></div>
+          <div style="padding:1.2rem 1.3rem 1.4rem">
+            <div style="display:inline-block;background:#2F6B3C;color:#fff;font-size:.75rem;font-weight:800;padding:.2rem .6rem;border-radius:999px;margin-bottom:.5rem">東北で唯一</div>
+            <h3 style="font-size:1.05rem;font-weight:800;margin:0 0 .4rem;color:#1F4A29">Gカート（一人乗りカート）</h3>
+            <p style="font-size:.89rem;color:#5D6B74;margin:0">自分のペースで、自分のボールのそばまで。追加料金はかかりません。台数に限りがあるため、事前にご連絡ください。</p>
+          </div>
+        </div>
+        <div style="border:1px solid #D5DDE0;border-radius:10px;overflow:hidden">
+          <div style="position:relative;min-height:170px"><image-slot id="top-cart-hello" shape="rect" placeholder="ハローキャディがプレーヤーに付いて歩いているところ"></image-slot></div>
+          <div style="padding:1.2rem 1.3rem 1.4rem">
+            <div style="display:inline-block;background:#E0A526;color:#1B2A33;font-size:.75rem;font-weight:800;padding:.2rem .6rem;border-radius:999px;margin-bottom:.5rem">1,000円引き</div>
+            <h3 style="font-size:1.05rem;font-weight:800;margin:0 0 .4rem;color:#1F4A29">ハローキャディ</h3>
+            <p style="font-size:.89rem;color:#5D6B74;margin:0">クラブを載せて自動で付いてくるキャディロボット。ご利用でプレー料金が1,000円引きになります。同伴の皆さま全員でのご選択をお願いしています。</p>
+          </div>
+        </div>
+        <div style="border:1px solid #D5DDE0;border-radius:10px;overflow:hidden">
+          <div style="position:relative;min-height:170px"><image-slot id="top-cart-fw" shape="rect" placeholder="フェアウェイに乗り入れた乗用カート。雨上がりの日でも可"></image-slot></div>
+          <div style="padding:1.2rem 1.3rem 1.4rem">
+            <div style="display:inline-block;background:#2F6B3C;color:#fff;font-size:.75rem;font-weight:800;padding:.2rem .6rem;border-radius:999px;margin-bottom:.5rem">終日OK</div>
+            <h3 style="font-size:1.05rem;font-weight:800;margin:0 0 .4rem;color:#1F4A29">フェアウェイ乗り入れ</h3>
+            <p style="font-size:.89rem;color:#5D6B74;margin:0">砂地で水はけがよいため、雨の日も雨上がりも一日中乗り入れができます。歩く距離が短く、楽に回れます。</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section style="background:#EAF2EB;padding:clamp(3.8rem,6vw,5rem) clamp(1.3rem,4vw,3rem)">
+    <div style="max-width:1120px;margin:0 auto">
+      <h2 style="font-size:clamp(1.35rem,3vw,1.9rem);font-weight:800;margin:0 0 .6rem;line-height:1.55">施設・サービス</h2>
+      <p style="color:#5D6B74;font-size:.95rem;margin:0 0 2rem;max-width:38em">クラブハウス、浴室、ショップ、レンタル。プレーの前後も気持ちよく過ごせるように整えています。</p>
+      <div style="display:grid;gap:1.1rem;grid-template-columns:repeat(auto-fit,minmax(220px,1fr))">
+        <div style="background:#fff;border:1px solid #D5DDE0;border-radius:10px;overflow:hidden">
+          <div style="position:relative;min-height:150px"><image-slot id="top-fac-1" shape="rect" placeholder="クラブハウス外観"></image-slot></div>
+          <div style="padding:1rem 1.1rem 1.2rem"><h3 style="font-size:.98rem;font-weight:800;margin:0 0 .3rem;color:#1F4A29">クラブハウス</h3><p style="font-size:.86rem;color:#5D6B74;margin:0">受付からレストランまで、迷わない動線です。</p></div>
+        </div>
+        <div style="background:#fff;border:1px solid #D5DDE0;border-radius:10px;overflow:hidden">
+          <div style="position:relative;min-height:150px"><image-slot id="top-fac-2" shape="rect" placeholder="浴室またはロッカールーム"></image-slot></div>
+          <div style="padding:1rem 1.1rem 1.2rem"><h3 style="font-size:.98rem;font-weight:800;margin:0 0 .3rem;color:#1F4A29">ロッカー・浴室</h3><p style="font-size:.86rem;color:#5D6B74;margin:0">プレー後に汗を流してからお帰りいただけます。</p></div>
+        </div>
+        <div style="background:#fff;border:1px solid #D5DDE0;border-radius:10px;overflow:hidden">
+          <div style="position:relative;min-height:150px"><image-slot id="top-fac-3" shape="rect" placeholder="ゴルフショップの棚まわり"></image-slot></div>
+          <div style="padding:1rem 1.1rem 1.2rem"><h3 style="font-size:.98rem;font-weight:800;margin:0 0 .3rem;color:#1F4A29">ゴルフショップ</h3><p style="font-size:.86rem;color:#5D6B74;margin:0">忘れ物やその日の消耗品はこちらで揃います。</p></div>
+        </div>
+        <div style="background:#fff;border:1px solid #D5DDE0;border-radius:10px;overflow:hidden">
+          <div style="position:relative;min-height:150px"><image-slot id="top-fac-4" shape="rect" placeholder="レンタルクラブ一式"></image-slot></div>
+          <div style="padding:1rem 1.1rem 1.2rem"><h3 style="font-size:.98rem;font-weight:800;margin:0 0 .3rem;color:#1F4A29">レンタル</h3><p style="font-size:.86rem;color:#5D6B74;margin:0">クラブ、シューズ、用品一式。手ぶらでお越しいただけます。</p></div>
+        </div>
+      </div>
+      <a href="#" style="display:inline-block;margin-top:1.6rem;font-weight:700;color:#2F6B3C;border-bottom:2px solid #2F6B3C;text-decoration:none;padding-bottom:2px">施設・サービスを見る</a>
+    </div>
+  </section>
+
+  <section style="background:#06843A;padding:clamp(3.2rem,5vw,4.4rem) clamp(1.3rem,4vw,3rem)">
+    <div style="max-width:1120px;margin:0 auto;display:grid;gap:clamp(1.6rem,3vw,3rem);grid-template-columns:repeat(auto-fit,minmax(280px,1fr));align-items:center">
+      <div>
+        <div style="display:inline-block;background:#fff;color:#06843A;font-weight:800;font-size:.8rem;padding:.3rem .8rem;border-radius:999px;margin-bottom:.9rem">公式LINE</div>
+        <h2 style="font-size:clamp(1.35rem,3vw,1.9rem);font-weight:800;margin:0 0 .6rem;line-height:1.55;color:#fff">クーポンとスタンプカードは、LINEで。</h2>
+        <p style="color:#fff;font-size:.95rem;margin:0 0 1.4rem;max-width:34em">毎回のプレーに使えるクーポン、貯まるスタンプカード、コースとレストランの最新情報、コンペやイベントの案内をお届けします。</p>
+        <div style="display:flex;flex-wrap:wrap;gap:1.4rem;margin-bottom:1.6rem">
+          <div style="color:#fff;font-size:.88rem;font-weight:700">プレーで使えるクーポン</div>
+          <div style="color:#fff;font-size:.88rem;font-weight:700">スタンプカード</div>
+          <div style="color:#fff;font-size:.88rem;font-weight:700">イベント先行案内</div>
+        </div>
+        <a href="https://lin.ee/a6iafb8" style="display:inline-block;text-decoration:none;font-weight:800;font-size:1rem;padding:.95rem 2.2rem;border-radius:8px;background:#fff;color:#06843A" style-hover="background:#EAF2EB">友だち追加する</a>
+      </div>
+      <div style="display:flex;justify-content:center">
+        <div style="background:#fff;padding:1.1rem;border-radius:12px;display:flex;flex-direction:column;align-items:center;gap:.6rem">
+          <image-slot id="top-line-qr" shape="rect" style="width:150px;height:150px" placeholder="LINE友だち追加QR"></image-slot>
+          <div style="font-size:.78rem;font-weight:700;color:#5D6B74">QRコードで追加</div>
+        </div>
       </div>
     </div>
   </section>
@@ -142,34 +280,67 @@ html{scroll-behavior:smooth}
       <p style="color:#5D6B74;font-size:.95rem;margin:0 0 2rem;max-width:38em">お得な情報とイベントの案内です。</p>
       <div style="display:grid;gap:1.2rem;grid-template-columns:repeat(auto-fit,minmax(260px,1fr))">
         <a href="#" style="text-decoration:none;border:1px solid #D5DDE0;border-radius:10px;overflow:hidden;display:block;color:inherit">
-          <div style="background:repeating-linear-gradient(135deg,rgba(47,107,60,.07) 0 10px,transparent 10px 20px),#EAF2EB;color:#5D6B74;font-size:12px;display:flex;align-items:center;justify-content:center;text-align:center;padding:1.1rem;min-height:150px">アイキャッチ画像</div>
+          <div style="position:relative;min-height:150px"><image-slot id="top-news-1" shape="rect" placeholder="アイキャッチ画像"></image-slot></div>
           <div style="padding:1rem 1.1rem 1.3rem">
             <div style="font-size:.78rem;color:#5D6B74;font-weight:700">2026.06.23</div>
             <div style="font-size:.95rem;font-weight:700;line-height:1.6;margin-top:.2rem">雨の日も、雨上がりも。終日フェアウェイ乗り入れができます</div>
           </div>
         </a>
         <a href="#" style="text-decoration:none;border:1px solid #D5DDE0;border-radius:10px;overflow:hidden;display:block;color:inherit">
-          <div style="background:repeating-linear-gradient(135deg,rgba(47,107,60,.07) 0 10px,transparent 10px 20px),#EAF2EB;color:#5D6B74;font-size:12px;display:flex;align-items:center;justify-content:center;text-align:center;padding:1.1rem;min-height:150px">アイキャッチ画像</div>
+          <div style="position:relative;min-height:150px"><image-slot id="top-news-2" shape="rect" placeholder="アイキャッチ画像"></image-slot></div>
           <div style="padding:1rem 1.1rem 1.3rem">
             <div style="font-size:.78rem;color:#5D6B74;font-weight:700">2026.05.09</div>
             <div style="font-size:.95rem;font-weight:700;line-height:1.6;margin-top:.2rem">金曜日は完全セルフデー。5月限定で実施します</div>
           </div>
         </a>
         <a href="#" style="text-decoration:none;border:1px solid #D5DDE0;border-radius:10px;overflow:hidden;display:block;color:inherit">
-          <div style="background:repeating-linear-gradient(135deg,rgba(47,107,60,.07) 0 10px,transparent 10px 20px),#EAF2EB;color:#5D6B74;font-size:12px;display:flex;align-items:center;justify-content:center;text-align:center;padding:1.1rem;min-height:150px">アイキャッチ画像</div>
+          <div style="position:relative;min-height:150px"><image-slot id="top-news-3" shape="rect" placeholder="アイキャッチ画像"></image-slot></div>
           <div style="padding:1rem 1.1rem 1.3rem">
             <div style="font-size:.78rem;color:#5D6B74;font-weight:700">2026.04.05</div>
-            <div style="font-size:.95rem;font-weight:700;line-height:1.6;margin-top:.2rem">水曜・木曜のシニア＆レディースデー、食事付き5,800円から</div>
+            <div style="font-size:.95rem;font-weight:700;line-height:1.6;margin-top:.2rem">東北で唯一の一人乗りGカート。追加料金なしでご利用いただけます</div>
           </div>
         </a>
       </div>
     </div>
   </section>
 
+  <section style="background:#EAF2EB;padding:clamp(3.2rem,5vw,4.4rem) clamp(1.3rem,4vw,3rem)">
+    <div style="max-width:1120px;margin:0 auto;display:grid;gap:clamp(1.4rem,3vw,2.6rem);grid-template-columns:repeat(auto-fit,minmax(260px,1fr))">
+      <div>
+        <div style="display:inline-block;border:1px solid #2F6B3C;color:#2F6B3C;font-weight:800;font-size:.8rem;padding:.25rem .75rem;border-radius:999px;margin-bottom:.8rem">新規会員募集中</div>
+        <h2 style="font-size:clamp(1.35rem,3vw,1.9rem);font-weight:800;margin:0 0 .6rem;line-height:1.55">友の会</h2>
+        <p style="color:#5D6B74;font-size:.95rem;margin:0 0 1.3rem;max-width:34em">地元ゴルファーのための会員制度です。優待料金でのプレー、月例会への参加、会員限定イベントのご案内があります。</p>
+        <a href="#" style="display:inline-block;font-weight:700;color:#2F6B3C;border-bottom:2px solid #2F6B3C;text-decoration:none;padding-bottom:2px">友の会について見る</a>
+      </div>
+      <div>
+        <h2 style="font-size:clamp(1.35rem,3vw,1.9rem);font-weight:800;margin:0 0 .6rem;line-height:1.55">競技会・月例会</h2>
+        <p style="color:#5D6B74;font-size:.95rem;margin:0 0 1.3rem;max-width:34em">毎月の月例会をはじめ、年間を通して競技を開催しています。スケジュールと過去の成績を掲載しています。</p>
+        <a href="#" style="display:inline-block;font-weight:700;color:#2F6B3C;border-bottom:2px solid #2F6B3C;text-decoration:none;padding-bottom:2px">競技会の予定を見る</a>
+      </div>
+    </div>
+  </section>
+
+  <section style="padding:clamp(3.8rem,6vw,5rem) clamp(1.3rem,4vw,3rem)">
+    <div style="max-width:1120px;margin:0 auto;display:grid;gap:clamp(1.6rem,3vw,3rem);grid-template-columns:repeat(auto-fit,minmax(320px,1fr));align-items:center">
+      <div>
+        <h2 style="font-size:clamp(1.35rem,3vw,1.9rem);font-weight:800;margin:0 0 .6rem;line-height:1.55">泊まって、もう一日。</h2>
+        <p style="color:#5D6B74;font-size:.95rem;margin:0 0 1.3rem;max-width:34em">白神山地と日本海、近隣の温泉。県外からお越しの方に向けて、宿泊とセットのプランと1泊2日のモデルコースをご用意しています。</p>
+        <div style="display:flex;flex-wrap:wrap;gap:.5rem;margin-bottom:1.5rem">
+          <span style="border:1px solid #2F6B3C;color:#2F6B3C;font-size:.83rem;font-weight:700;padding:.35rem .8rem;border-radius:999px">ゴルフ＋宿泊プラン</span>
+          <span style="border:1px solid #2F6B3C;color:#2F6B3C;font-size:.83rem;font-weight:700;padding:.35rem .8rem;border-radius:999px">周辺ホテル</span>
+          <span style="border:1px solid #2F6B3C;color:#2F6B3C;font-size:.83rem;font-weight:700;padding:.35rem .8rem;border-radius:999px">温泉・観光</span>
+          <span style="border:1px solid #2F6B3C;color:#2F6B3C;font-size:.83rem;font-weight:700;padding:.35rem .8rem;border-radius:999px">1泊2日モデルコース</span>
+        </div>
+        <a href="#" style="display:inline-block;font-weight:700;color:#2F6B3C;border-bottom:2px solid #2F6B3C;text-decoration:none;padding-bottom:2px">宿泊・旅行を見る</a>
+      </div>
+      <div style="position:relative;min-height:300px;border-radius:6px;overflow:hidden"><image-slot id="top-stay" shape="rect" placeholder="周辺の温泉宿、または白神山地・日本海の風景"></image-slot></div>
+    </div>
+  </section>
+
   <section style="background:#E6EEF1;padding:clamp(3.8rem,6vw,5rem) clamp(1.3rem,4vw,3rem)">
     <div style="max-width:1120px;margin:0 auto">
       <h2 style="font-size:clamp(1.35rem,3vw,1.9rem);font-weight:800;margin:0 0 .6rem;line-height:1.55">アクセス</h2>
-      <p style="color:#5D6B74;font-size:.95rem;margin:0 0 2rem;max-width:38em">〒018-2507 秋田県山本郡八峰町峰浜田中字大土面18</p>
+      <p style="color:#5D6B74;font-size:.95rem;margin:0 0 2rem;max-width:38em">〒018-2507 秋田県山本郡八峰町峰浜田中字大土面18　／　無料送迎は予約制で承ります</p>
       <div style="display:grid;gap:clamp(1.8rem,3vw,3rem);grid-template-columns:repeat(auto-fit,minmax(300px,1fr))">
         <div style="background:repeating-linear-gradient(135deg,rgba(47,107,60,.07) 0 10px,transparent 10px 20px),#EAF2EB;border:1px solid #D5DDE0;color:#5D6B74;font-size:12px;display:flex;align-items:center;justify-content:center;text-align:center;padding:1.1rem;border-radius:6px;min-height:300px">地図：Googleマップ埋め込み</div>
         <div style="background:#fff;border-radius:10px;border:1px solid #D5DDE0;overflow:hidden">
@@ -200,19 +371,28 @@ html{scroll-behavior:smooth}
         〒018-2507 秋田県山本郡八峰町峰浜田中字大土面18<br>
         電話 0185-88-8732／FAX 0185-88-8733<br>
         <a href="mailto:info@noshirocountryclub.com" style="color:#2F6B3C">info@noshirocountryclub.com</a>
+        <div style="display:flex;gap:1rem;margin-top:.9rem;font-weight:700">
+          <a href="https://www.instagram.com/noshirocc" style="color:#2F6B3C">Instagram</a>
+          <a href="https://www.facebook.com/noshirocc" style="color:#2F6B3C">Facebook</a>
+          <a href="https://lin.ee/a6iafb8" style="color:#2F6B3C">公式LINE</a>
+        </div>
       </div>
       <div style="display:flex;flex-wrap:wrap;gap:.7rem 1.3rem;font-weight:600;align-content:flex-start">
-        <a href="about.html" style="color:#2F6B3C">クラブ概要</a>
-        <a href="course.html" style="color:#2F6B3C">コースガイド</a>
-        <a href="price.html" style="color:#2F6B3C">料金プラン</a>
-        <a href="members.html" style="color:#2F6B3C">友の会</a>
-        <a href="competition.html" style="color:#2F6B3C">競技会</a>
-        <a href="access.html" style="color:#2F6B3C">アクセス・宿泊</a>
-        <a href="https://reservation.swingclubweb.com/5219/top" style="color:#2F6B3C">WEB予約</a>
-        <a href="https://docs.google.com/forms/d/e/1FAIpQLSdaCyZjj16OSVK0ZK1lWukQmj24GgK_5LGddmplg3EAmT-rtQ/viewform" style="color:#2F6B3C">お問い合わせ</a>
-        <a href="https://www.instagram.com/noshirocc" style="color:#2F6B3C">Instagram</a>
-        <a href="https://www.facebook.com/noshirocc" style="color:#2F6B3C">Facebook</a>
-        <a href="https://lin.ee/a6iafb8" style="color:#2F6B3C">公式LINE</a>
+        <a href="#" style="color:#2F6B3C">魅力</a>
+        <a href="#" style="color:#2F6B3C">料金・プラン</a>
+        <a href="#" style="color:#2F6B3C">コース</a>
+        <a href="#" style="color:#2F6B3C">施設・サービス</a>
+        <a href="#" style="color:#2F6B3C">アクセス</a>
+        <a href="#" style="color:#2F6B3C">宿泊・旅行</a>
+        <a href="#" style="color:#2F6B3C">友の会</a>
+        <a href="#" style="color:#2F6B3C">競技会・月例会</a>
+        <a href="#" style="color:#2F6B3C">お知らせ</a>
+        <a href="#" style="color:#2F6B3C">ゴルフ場について</a>
+        <a href="#" style="color:#2F6B3C">採用情報</a>
+        <a href="#" style="color:#2F6B3C">お問い合わせ</a>
+        <a href="#" style="color:#2F6B3C">寄付・ご支援のお願い</a>
+        <a href="#" style="color:#2F6B3C">キャンセルポリシー・利用規約</a>
+        <a href="#" style="color:#2F6B3C">プライバシーポリシー</a>
       </div>
     </div>
     <div style="max-width:1120px;margin:2.2rem auto 0;font-size:.76rem;color:#8A959B">運営：八峰しらかみ株式会社　© 2026 Noshiro Country Club</div>
@@ -227,13 +407,12 @@ html{scroll-behavior:smooth}
 
 </div>
 </x-dc>
-<script type="text/x-dc" data-dc-script data-props="{&quot;showAlert&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;表示切替&quot;},&quot;showMobileBar&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:false,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;表示切替&quot;},&quot;heroImageFirst&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:false,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;レイアウト&quot;}}">
+<script type="text/x-dc" data-dc-script data-props="{&quot;showAlert&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;表示切替&quot;},&quot;showMobileBar&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:false,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;表示切替&quot;}}">
 class Component extends DCLogic {
   renderVals() {
     return {
       showAlert: this.props.showAlert ?? true,
       showMobileBar: this.props.showMobileBar ?? false,
-      textOrder: (this.props.heroImageFirst ?? false) ? 2 : 0,
     };
   }
 }
