@@ -67,6 +67,7 @@ img{max-width:100%}
 
   <div style="position:relative;height:clamp(460px,64vh,620px);overflow:hidden;background:#0C1A12">
     <img src="./images/hero-manager.jpg" alt="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 38%;display:block;z-index:0">
+    {{ heroCarousel }}
     <sc-if value="{{ useHeroVideo }}" hint-placeholder-val="{{ false }}">
       <video src="./images/hero.mp4" poster="./images/hero-manager.jpg" autoplay="{{ true }}" muted="{{ true }}" loop="{{ true }}" playsinline="{{ true }}" preload="metadata" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 38%;display:block;z-index:1;pointer-events:none"></video>
     </sc-if>
@@ -439,14 +440,60 @@ img{max-width:100%}
 
 </div>
 </x-dc>
-<script type="text/x-dc" data-dc-script data-props="{&quot;showAlert&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;表示切替&quot;},&quot;showMobileBar&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:false,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;表示切替&quot;},&quot;useHeroVideo&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:false,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;トップの画像&quot;}}">
+<script type="text/x-dc" data-dc-script data-props="{&quot;heroMode&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;photo&quot;,&quot;carousel&quot;,&quot;video&quot;],&quot;default&quot;:&quot;carousel&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;トップの画像&quot;},&quot;heroImages&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;./images/hero-green.jpg, ./images/hero-header1.jpg&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;トップの画像&quot;},&quot;heroInterval&quot;:{&quot;editor&quot;:&quot;int&quot;,&quot;default&quot;:5,&quot;min&quot;:2,&quot;max&quot;:20,&quot;unit&quot;:&quot;秒&quot;,&quot;tsType&quot;:&quot;number&quot;,&quot;section&quot;:&quot;トップの画像&quot;},&quot;showAlert&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;表示切替&quot;},&quot;showMobileBar&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:false,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;表示切替&quot;}}">
 class Component extends DCLogic {
+  state = { slide: 0 };
+
+  _images() {
+    const raw = this.props.heroImages ?? './images/hero-green.jpg, ./images/hero-header1.jpg';
+    const list = raw.split(',').map((s) => s.trim()).filter(Boolean);
+    return list;
+  }
+
+  componentDidMount() {
+    if ((this.props.heroMode ?? 'photo') !== 'carousel') return;
+    const n = this._images().length;
+    if (n < 2) return;
+    const sec = Math.max(2, this.props.heroInterval ?? 6);
+    this._timer = setInterval(() => {
+      this.setState((s) => ({ slide: (s.slide + 1) % n }));
+    }, sec * 1000);
+  }
+
+  componentWillUnmount() {
+    if (this._timer) clearInterval(this._timer);
+  }
+
   renderVals() {
+    const mode = this.props.heroMode ?? 'carousel';
+    const imgs = this._images();
+    // クロスフェードは再描画で状態が消えないよう、要素ごと生成する
+    const layers = mode === 'carousel' && imgs.length
+      ? React.createElement(
+          'div',
+          { style: { position: 'absolute', inset: 0, zIndex: 1 } },
+          imgs.map((src, i) =>
+            React.createElement('img', {
+              key: src + i,
+              src,
+              alt: '',
+              style: {
+                position: 'absolute', inset: 0, width: '100%', height: '100%',
+                objectFit: 'cover', objectPosition: 'center 38%', display: 'block',
+                opacity: i === this.state.slide ? 1 : 0,
+                transition: 'opacity 1.2s ease-in-out',
+              },
+            })
+          )
+        )
+      : null;
+
     return {
       showAlert: this.props.showAlert ?? true,
       showMobileBar: this.props.showMobileBar ?? false,
-      // images/hero.mp4 を置いたら useHeroVideo を ON にすると動画に切り替わる
-      useHeroVideo: this.props.useHeroVideo ?? false,
+      // images/hero.mp4 を置いたら heroMode を video にすると動画に切り替わる
+      useHeroVideo: mode === 'video',
+      heroCarousel: layers,
     };
   }
 }
