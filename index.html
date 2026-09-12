@@ -4,6 +4,18 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <script src="./support.js"></script>
+<meta name="robots" content="noindex, nofollow">
+<title>能代カントリークラブ｜秋田県八峰町のゴルフ場</title>
+<meta name="description" content="白神山地と日本海に抱かれた18ホール。昼食つき8,500円から、終日フェアウェイ乗り入れ可。東北で唯一の一人乗りGカートもご利用いただけます。能代東ICから15分。">
+<link rel="canonical" href="https://noshirocc.dry-surf-609b.workers.dev/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="能代カントリークラブ">
+<meta property="og:url" content="https://noshirocc.dry-surf-609b.workers.dev/">
+<meta property="og:title" content="能代カントリークラブ｜秋田県八峰町のゴルフ場">
+<meta property="og:description" content="白神山地と日本海に抱かれた18ホール。昼食つき8,500円から、終日フェアウェイ乗り入れ可。東北で唯一の一人乗りGカートもご利用いただけます。能代東ICから15分。">
+<meta property="og:image" content="https://noshirocc.dry-surf-609b.workers.dev/images/hero-manager.jpg">
+<meta property="og:locale" content="ja_JP">
+<meta name="twitter:card" content="summary_large_image">
 <style id="publish-scroll-fix">html,body{height:auto!important;min-height:100%}#dc-root,#dc-root>.sc-host{height:auto!important}</style>
 </head>
 <body>
@@ -69,7 +81,7 @@ img{max-width:100%}
     <img src="./images/hero-manager.jpg" alt="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 38%;display:block;z-index:0">
     {{ heroCarousel }}
     <sc-if value="{{ useHeroVideo }}" hint-placeholder-val="{{ false }}">
-      <video src="./images/hero.mp4" poster="./images/hero-manager.jpg" autoplay="{{ true }}" muted="{{ true }}" loop="{{ true }}" playsinline="{{ true }}" preload="metadata" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 38%;display:block;z-index:1;pointer-events:none"></video>
+      <video src="./images/hero.mp4" poster="./images/hero-manager.jpg" autoPlay="{{ true }}" muted="{{ true }}" loop="{{ true }}" playsInline="{{ true }}" preload="auto" ref="{{ heroVideoRef }}" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 38%;display:block;z-index:0;pointer-events:none"></video>
     </sc-if>
     <div style="position:absolute;inset:0;pointer-events:none;background:linear-gradient(to top,rgba(12,26,18,.88) 0%,rgba(12,26,18,.55) 38%,rgba(12,26,18,.05) 72%)"></div>
     <div style="position:absolute;left:0;right:0;bottom:0;padding:clamp(1.5rem,4vw,2.8rem);display:flex;flex-wrap:wrap;align-items:flex-end;gap:1.5rem 2.2rem;pointer-events:none">
@@ -440,7 +452,7 @@ img{max-width:100%}
 
 </div>
 </x-dc>
-<script type="text/x-dc" data-dc-script data-props="{&quot;heroMode&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;photo&quot;,&quot;carousel&quot;,&quot;video&quot;],&quot;default&quot;:&quot;carousel&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;トップの画像&quot;},&quot;heroImages&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;./images/hero-manager.jpg, ./images/hero-green.jpg, ./images/hero-header1.jpg&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;トップの画像&quot;},&quot;heroInterval&quot;:{&quot;editor&quot;:&quot;int&quot;,&quot;default&quot;:5,&quot;min&quot;:2,&quot;max&quot;:20,&quot;unit&quot;:&quot;秒&quot;,&quot;tsType&quot;:&quot;number&quot;,&quot;section&quot;:&quot;トップの画像&quot;},&quot;showAlert&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;表示切替&quot;},&quot;showMobileBar&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:false,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;表示切替&quot;}}">
+<script type="text/x-dc" data-dc-script data-props="{&quot;heroMode&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;photo&quot;,&quot;carousel&quot;,&quot;video&quot;],&quot;default&quot;:&quot;video&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;トップの画像&quot;},&quot;heroImages&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;./images/hero-manager.jpg, ./images/hero-green.jpg, ./images/hero-header1.jpg&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;トップの画像&quot;},&quot;heroInterval&quot;:{&quot;editor&quot;:&quot;int&quot;,&quot;default&quot;:5,&quot;min&quot;:2,&quot;max&quot;:20,&quot;unit&quot;:&quot;秒&quot;,&quot;tsType&quot;:&quot;number&quot;,&quot;section&quot;:&quot;トップの画像&quot;},&quot;showAlert&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;表示切替&quot;},&quot;showMobileBar&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:false,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;表示切替&quot;}}">
 class Component extends DCLogic {
   state = { slide: 0 };
 
@@ -452,7 +464,10 @@ class Component extends DCLogic {
   }
 
   componentDidMount() {
-    if ((this.props.heroMode ?? 'photo') !== 'carousel') return;
+    // ブラウザが autoPlay を弾いた場合の保険。muted なので再生は許可される。
+    const v = this._video;
+    if (v && v.paused) { const p = v.play(); if (p && p.catch) p.catch(() => {}); }
+    if ((this.props.heroMode ?? 'video') !== 'carousel') return;
     const n = this._images().length;
     if (n < 2) return;
     const sec = Math.max(2, this.props.heroInterval ?? 6);
@@ -466,7 +481,7 @@ class Component extends DCLogic {
   }
 
   renderVals() {
-    const mode = this.props.heroMode ?? 'carousel';
+    const mode = this.props.heroMode ?? 'video';
     const imgs = this._images();
     // クロスフェードは再描画で状態が消えないよう、要素ごと生成する
     const layers = mode === 'carousel' && imgs.length
@@ -495,6 +510,7 @@ class Component extends DCLogic {
       showMobileBar: this.props.showMobileBar ?? false,
       // images/hero.mp4 を置いたら heroMode を video にすると動画に切り替わる
       useHeroVideo: mode === 'video',
+      heroVideoRef: (el) => { this._video = el; if (el && el.paused) { const p = el.play(); if (p && p.catch) p.catch(() => {}); } },
       heroCarousel: layers,
     };
   }
