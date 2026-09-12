@@ -78,7 +78,7 @@ img{max-width:100%}
         <h1 style="margin:0;color:#fff;font-size:clamp(2rem,5.4vw,3.6rem);font-weight:800;line-height:1.34;text-shadow:0 2px 24px rgba(0,0,0,.45)">海風のコースへ、<br>手ぶらで。</h1>
         <p style="margin:.9rem 0 0;color:#fff;font-size:1rem;line-height:1.8;max-width:30em;text-shadow:0 1px 14px rgba(0,0,0,.6)">秋田・八峰町の18ホール。雨の日も一日中フェアウェイに乗り入れできます。</p>
       </div>
-      <div style="display:flex;flex-direction:column;gap:.45rem">
+      <div style="display:flex;flex-direction:column;gap:.55rem;white-space:nowrap">
         <span style="color:#fff;font-size:.83rem;font-weight:700;text-shadow:0 1px 10px rgba(0,0,0,.7)">初心者歓迎</span>
         <span style="color:#fff;font-size:.83rem;font-weight:700;text-shadow:0 1px 10px rgba(0,0,0,.7)">レンタル一式あり</span>
         <span style="color:#fff;font-size:.83rem;font-weight:700;text-shadow:0 1px 10px rgba(0,0,0,.7)">終日カート乗り入れOK</span>
@@ -440,12 +440,13 @@ img{max-width:100%}
 
 </div>
 </x-dc>
-<script type="text/x-dc" data-dc-script data-props="{&quot;heroMode&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;photo&quot;,&quot;carousel&quot;,&quot;video&quot;],&quot;default&quot;:&quot;carousel&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;トップの画像&quot;},&quot;heroImages&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;./images/hero-green.jpg, ./images/hero-header1.jpg&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;トップの画像&quot;},&quot;heroInterval&quot;:{&quot;editor&quot;:&quot;int&quot;,&quot;default&quot;:5,&quot;min&quot;:2,&quot;max&quot;:20,&quot;unit&quot;:&quot;秒&quot;,&quot;tsType&quot;:&quot;number&quot;,&quot;section&quot;:&quot;トップの画像&quot;},&quot;showAlert&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;表示切替&quot;},&quot;showMobileBar&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:false,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;表示切替&quot;}}">
+<script type="text/x-dc" data-dc-script data-props="{&quot;heroMode&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;photo&quot;,&quot;carousel&quot;,&quot;video&quot;],&quot;default&quot;:&quot;carousel&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;トップの画像&quot;},&quot;heroImages&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;./images/hero-manager.jpg, ./images/hero-green.jpg, ./images/hero-header1.jpg&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;トップの画像&quot;},&quot;heroInterval&quot;:{&quot;editor&quot;:&quot;int&quot;,&quot;default&quot;:5,&quot;min&quot;:2,&quot;max&quot;:20,&quot;unit&quot;:&quot;秒&quot;,&quot;tsType&quot;:&quot;number&quot;,&quot;section&quot;:&quot;トップの画像&quot;},&quot;showAlert&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;表示切替&quot;},&quot;showMobileBar&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:false,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;表示切替&quot;}}">
 class Component extends DCLogic {
   state = { slide: 0 };
 
   _images() {
-    const raw = this.props.heroImages ?? './images/hero-green.jpg, ./images/hero-header1.jpg';
+    // 1枚目は背景の固定画像と同じものにする（起動直後に切り替わって見えるのを防ぐ）
+    const raw = this.props.heroImages ?? './images/hero-manager.jpg, ./images/hero-green.jpg, ./images/hero-header1.jpg';
     const list = raw.split(',').map((s) => s.trim()).filter(Boolean);
     return list;
   }
@@ -471,7 +472,8 @@ class Component extends DCLogic {
     const layers = mode === 'carousel' && imgs.length
       ? React.createElement(
           'div',
-          { style: { position: 'absolute', inset: 0, zIndex: 1 } },
+          // 文字とグラデーションより下に置く。z-index を上げると文字が隠れる。
+          { style: { position: 'absolute', inset: 0, zIndex: 0 } },
           imgs.map((src, i) =>
             React.createElement('img', {
               key: src + i,
