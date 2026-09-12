@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+<style id="publish-scroll-fix">html,body{height:auto!important;min-height:100%}#dc-root,#dc-root>.sc-host{height:auto!important}</style>
+</head>
+<body>
+<x-dc>
+<helmet>
+<style>
+body{margin:0}
+a{color:#2F6B3C}
+a:hover{color:#1F4A29}
+:focus-visible{outline:3px solid #E0A526;outline-offset:2px}
+</style>
+</helmet>
+<div style="background:#fff;color:#1B2A33;font-family:'Hiragino Sans','Hiragino Kaku Gothic ProN','Yu Gothic',sans-serif;font-size:17px;line-height:1.85;-webkit-font-smoothing:antialiased;overflow-x:clip">
+
+  <dc-import name="SiteHeader" hint-size="100%,74px"></dc-import>
+
+  <div style="background:#E6EEF1;padding:clamp(2.5rem,5vw,3.5rem) clamp(1.3rem,4vw,3rem)">
+    <div style="max-width:1120px;margin:0 auto">
+      <h1 style="font-size:clamp(1.8rem,5vw,2.6rem);font-weight:800;margin:0;line-height:1.45">お得な情報</h1>
+      <p style="margin:.8rem 0 0;font-size:1rem;color:#5D6B74;max-width:42em;text-wrap:pretty">キャンペーン、季節のおすすめ、コースの読みものをお届けします。</p>
+      <div style="display:flex;flex-wrap:wrap;gap:.6rem;margin-top:1.4rem">
+        <a href="news.html" style="text-decoration:none;font-size:.88rem;font-weight:700;padding:.55rem 1.1rem;border-radius:999px;border:1px solid #D5DDE0;background:#fff;color:#5D6B74" style-hover="border-color:#2F6B3C;color:#2F6B3C">最新情報</a>
+        <span style="font-size:.88rem;font-weight:800;padding:.55rem 1.1rem;border-radius:999px;background:#2F6B3C;color:#fff">お得な情報</span>
+      </div>
+    </div>
+  </div>
+
+  <section style="padding:clamp(3rem,5vw,4.2rem) clamp(1.3rem,4vw,3rem)">
+    <div style="max-width:1120px;margin:0 auto">
+
+      <sc-if value="{{ loading }}" hint-placeholder-val="{{ true }}">
+        <div style="display:grid;gap:1.2rem;grid-template-columns:repeat(auto-fit,minmax(280px,1fr))">
+          <div style="border:1px solid #D5DDE0;border-radius:10px;overflow:hidden">
+            <div style="min-height:170px;background:#EAF2EB"></div>
+            <div style="padding:1.1rem 1.2rem 1.3rem"><div style="height:.7rem;width:35%;background:#E6EEF1;border-radius:3px"></div><div style="height:.9rem;width:85%;background:#E6EEF1;border-radius:3px;margin-top:.7rem"></div><div style="height:.9rem;width:60%;background:#E6EEF1;border-radius:3px;margin-top:.45rem"></div></div>
+          </div>
+          <div style="border:1px solid #D5DDE0;border-radius:10px;overflow:hidden">
+            <div style="min-height:170px;background:#EAF2EB"></div>
+            <div style="padding:1.1rem 1.2rem 1.3rem"><div style="height:.7rem;width:35%;background:#E6EEF1;border-radius:3px"></div><div style="height:.9rem;width:85%;background:#E6EEF1;border-radius:3px;margin-top:.7rem"></div><div style="height:.9rem;width:60%;background:#E6EEF1;border-radius:3px;margin-top:.45rem"></div></div>
+          </div>
+          <div style="border:1px solid #D5DDE0;border-radius:10px;overflow:hidden">
+            <div style="min-height:170px;background:#EAF2EB"></div>
+            <div style="padding:1.1rem 1.2rem 1.3rem"><div style="height:.7rem;width:35%;background:#E6EEF1;border-radius:3px"></div><div style="height:.9rem;width:85%;background:#E6EEF1;border-radius:3px;margin-top:.7rem"></div><div style="height:.9rem;width:60%;background:#E6EEF1;border-radius:3px;margin-top:.45rem"></div></div>
+          </div>
+        </div>
+      </sc-if>
+
+      <sc-if value="{{ hasPosts }}" hint-placeholder-val="{{ false }}">
+        <div style="display:grid;gap:1.2rem;grid-template-columns:repeat(auto-fit,minmax(280px,1fr))">
+          <sc-for list="{{ posts }}" as="post" hint-placeholder-count="0">
+            <a href="{{ post.link }}" target="_blank" rel="noopener" style="text-decoration:none;color:inherit;border:1px solid #D5DDE0;border-radius:10px;overflow:hidden;display:flex;flex-direction:column" style-hover="border-color:#2F6B3C">
+              <div style="min-height:170px;background:repeating-linear-gradient(135deg,rgba(47,107,60,.07) 0 10px,transparent 10px 20px),#EAF2EB;position:relative">
+                {{ post.imageEl }}
+              </div>
+              <div style="padding:1.1rem 1.2rem 1.3rem;display:flex;flex-direction:column;gap:.45rem;flex:1">
+                <div style="font-size:.78rem;color:#5D6B74;font-weight:700">{{ post.date }}</div>
+                <h2 style="font-size:1.02rem;font-weight:800;line-height:1.6;margin:0;color:#1F4A29;text-wrap:pretty">{{ post.title }}</h2>
+                <p style="font-size:.88rem;color:#5D6B74;margin:0;text-wrap:pretty">{{ post.excerpt }}</p>
+                <span style="font-size:.84rem;font-weight:700;color:#2F6B3C;margin-top:auto;padding-top:.5rem">記事を読む →</span>
+              </div>
+            </a>
+          </sc-for>
+        </div>
+      </sc-if>
+
+      <sc-if value="{{ failed }}" hint-placeholder-val="{{ false }}">
+        <div style="border:1px solid #D5DDE0;border-radius:10px;padding:1.6rem 1.5rem;background:#F3F6F4">
+          <h2 style="font-size:1.02rem;font-weight:800;margin:0 0 .4rem;color:#1F4A29">記事を読み込めませんでした</h2>
+          <p style="font-size:.92rem;color:#5D6B74;margin:0 0 1.1rem;text-wrap:pretty">時間をおいて再度お試しください。noteでも直接ご覧いただけます。</p>
+          <a href="{{ noteUrl }}" target="_blank" rel="noopener" style="text-decoration:none;font-weight:700;font-size:.92rem;padding:.75rem 1.5rem;border-radius:8px;border:2px solid #2F6B3C;color:#2F6B3C;display:inline-block" style-hover="background:#EAF2EB">noteで記事を見る</a>
+        </div>
+      </sc-if>
+
+      <div style="margin-top:2.4rem;padding-top:1.6rem;border-top:1px solid #D5DDE0">
+        <a href="{{ noteUrl }}" target="_blank" rel="noopener" style="font-weight:700;font-size:.95rem;text-decoration:none;border-bottom:2px solid #2F6B3C;padding-bottom:2px">noteで過去の記事をすべて見る</a>
+      </div>
+    </div>
+  </section>
+
+  <section style="background:#2F6B3C;color:#fff;text-align:center;padding:clamp(3.5rem,6vw,4.5rem) clamp(1.3rem,4vw,3rem)">
+    <div style="max-width:1120px;margin:0 auto">
+      <h2 style="font-size:clamp(1.3rem,3vw,1.8rem);font-weight:800;margin:0 0 .5rem;line-height:1.55">ご予約はこちらから</h2>
+      <p style="color:#D3E5D7;font-size:.95rem;margin:0 0 2rem">WEBまたはお電話で承ります。</p>
+      <div style="display:flex;flex-wrap:wrap;gap:.7rem .8rem;justify-content:center">
+        <a href="https://reservation.swingclubweb.com/5219/top" style="display:inline-block;text-decoration:none;font-weight:800;padding:1.05rem 2.4rem;border-radius:8px;background:#E0A526;color:#1B2A33;font-size:1.05rem" style-hover="background:#c9911f">WEBで予約する</a>
+        <a href="tel:0185-88-8732" style="display:inline-block;text-decoration:none;font-weight:800;padding:1.05rem 2.4rem;border-radius:8px;border:2px solid #fff;color:#fff" style-hover="background:rgba(255,255,255,.12)">0185-88-8732</a>
+      </div>
+    </div>
+  </section>
+
+  <dc-import name="SiteFooter" hint-size="100%,260px"></dc-import>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;noteUrl&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;https://note.com/noden_akita&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;note連携&quot;},&quot;proxyUrl&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;https://note-rss.dry-surf-609b.workers.dev/?url=&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;note連携&quot;}}">
+class Component extends DCLogic {
+  state = { posts: null, failed: false };
+
+  get noteUrl() {
+    return this.props.noteUrl ?? 'https://note.com/noden_akita';
+  }
+
+  componentDidMount() {
+    const rss = this.noteUrl.replace(/\/+$/, '') + '/rss';
+    // 本番は Cloudflare Worker（worker-note-rss.js）を経由させる。
+    // proxyUrl 未指定の間は公開の変換APIで動作する。
+    const proxy = this.props.proxyUrl ?? 'https://note-rss.dry-surf-609b.workers.dev/?url=';
+    const endpoint = proxy
+      ? proxy + encodeURIComponent(rss)
+      : 'https://api.rss2json.com/v1/api.json?rss_url=' + encodeURIComponent(rss);
+
+    fetch(endpoint)
+      .then((r) => (r.ok ? r.json() : Promise.reject(r.status)))
+      .then((d) => {
+        const items = d.items || [];
+        if (!items.length) return Promise.reject('empty');
+        this.setState({
+          posts: items.slice(0, 9).map((it) => {
+            const image = it.thumbnail || (it.enclosure && it.enclosure.link) || '';
+            return {
+              title: it.title || '(無題)',
+              link: it.link || this.noteUrl,
+              date: this._fmt(it.pubDate),
+              // 画像は要素ごと生成する。src に {{ }} を置くと、値が入る前の
+              // 描画で穴の文字列がそのままURLとして読み込まれてしまうため。
+              imageEl: image
+                ? React.createElement('img', {
+                    src: image,
+                    alt: '',
+                    style: { position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover', display: 'block' },
+                  })
+                : null,
+              excerpt: this._excerpt(it.description || it.content || ''),
+            };
+          }),
+        });
+      })
+      .catch(() => this.setState({ failed: true }));
+  }
+
+  _fmt(s) {
+    const raw = (s || '').trim();
+    // Worker は RFC-822（"Wed, 20 May 2026 19:00:41 +0900"）、
+    // rss2json は "2026-05-20 12:00:00" を返すため両方に対応する。
+    let d = new Date(raw);
+    if (isNaN(d)) d = new Date(raw.replace(' ', 'T'));
+    if (isNaN(d)) return '';
+    return d.getFullYear() + '.' + String(d.getMonth() + 1).padStart(2, '0') + '.' + String(d.getDate()).padStart(2, '0');
+  }
+
+  _excerpt(html) {
+    const t = html.replace(/<[^>]*>/g, '').replace(/\s+/g, ' ').trim();
+    return t.length > 90 ? t.slice(0, 90) + '…' : t;
+  }
+
+  renderVals() {
+    const posts = this.state.posts;
+    return {
+      posts: posts || [],
+      hasPosts: !!(posts && posts.length),
+      loading: !posts && !this.state.failed,
+      failed: this.state.failed,
+      noteUrl: this.noteUrl,
+    };
+  }
+}
+</script>
+</body>
+</html>

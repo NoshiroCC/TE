@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+<style id="publish-scroll-fix">html,body{height:auto!important;min-height:100%}#dc-root,#dc-root>.sc-host{height:auto!important}</style>
+</head>
+<body>
+<x-dc>
+<helmet>
+<style>
+body{margin:0}
+a{color:#2F6B3C}
+a:hover{color:#1F4A29}
+:focus-visible{outline:3px solid #E0A526;outline-offset:2px}
+</style>
+</helmet>
+<div style="background:#fff;color:#1B2A33;font-family:'Hiragino Sans','Hiragino Kaku Gothic ProN','Yu Gothic',sans-serif;font-size:17px;line-height:1.85;-webkit-font-smoothing:antialiased;overflow-x:clip">
+
+  <dc-import name="SiteHeader" hint-size="100%,74px"></dc-import>
+
+  <div style="background:#E6EEF1;padding:clamp(2.5rem,5vw,3.5rem) clamp(1.3rem,4vw,3rem)">
+    <div style="max-width:1120px;margin:0 auto">
+      <h1 style="font-size:clamp(1.8rem,5vw,2.6rem);font-weight:800;margin:0;line-height:1.45">最新情報</h1>
+      <p style="margin:.8rem 0 0;font-size:1rem;color:#5D6B74;max-width:42em;text-wrap:pretty">営業とコースに関するお知らせです。</p>
+      <div style="display:flex;flex-wrap:wrap;gap:.6rem;margin-top:1.4rem">
+        <span style="font-size:.88rem;font-weight:800;padding:.55rem 1.1rem;border-radius:999px;background:#2F6B3C;color:#fff">最新情報</span>
+        <a href="blog.html" style="text-decoration:none;font-size:.88rem;font-weight:700;padding:.55rem 1.1rem;border-radius:999px;border:1px solid #D5DDE0;background:#fff;color:#5D6B74" style-hover="border-color:#2F6B3C;color:#2F6B3C">お得な情報</a>
+      </div>
+    </div>
+  </div>
+
+  <section style="padding:clamp(3rem,5vw,4.2rem) clamp(1.3rem,4vw,3rem)">
+    <div style="max-width:860px;margin:0 auto">
+
+      <sc-if value="{{ loading }}" hint-placeholder-val="{{ true }}">
+        <div style="display:grid;gap:1.6rem">
+          <div><div style="height:.7rem;width:8rem;background:#E6EEF1;border-radius:3px"></div><div style="height:1rem;width:70%;background:#E6EEF1;border-radius:3px;margin-top:.7rem"></div></div>
+          <div><div style="height:.7rem;width:8rem;background:#E6EEF1;border-radius:3px"></div><div style="height:1rem;width:55%;background:#E6EEF1;border-radius:3px;margin-top:.7rem"></div></div>
+          <div><div style="height:.7rem;width:8rem;background:#E6EEF1;border-radius:3px"></div><div style="height:1rem;width:62%;background:#E6EEF1;border-radius:3px;margin-top:.7rem"></div></div>
+        </div>
+      </sc-if>
+
+      <sc-if value="{{ hasItems }}" hint-placeholder-val="{{ false }}">
+        <div style="display:grid;gap:2.2rem">
+          <sc-for list="{{ items }}" as="item" hint-placeholder-count="3">
+            <article style="display:grid;gap:.5rem">
+              <div style="display:flex;flex-wrap:wrap;align-items:center;gap:.7rem">
+                <span style="font-size:.82rem;color:#5D6B74;font-weight:700">{{ item.date }}</span>
+                <span style="font-size:.76rem;font-weight:800;color:#2F6B3C;border:1px solid #2F6B3C;border-radius:999px;padding:.15rem .65rem">{{ item.category }}</span>
+              </div>
+              <h2 style="font-size:1.12rem;font-weight:800;line-height:1.6;margin:0;color:#1F4A29;text-wrap:pretty">{{ item.title }}</h2>
+              <p style="font-size:.94rem;color:#5D6B74;margin:0;white-space:pre-line;text-wrap:pretty">{{ item.body }}</p>
+            </article>
+          </sc-for>
+        </div>
+      </sc-if>
+
+      <sc-if value="{{ empty }}" hint-placeholder-val="{{ false }}">
+        <p style="font-size:.95rem;color:#5D6B74;margin:0">現在お知らせはありません。</p>
+      </sc-if>
+
+      <sc-if value="{{ failed }}" hint-placeholder-val="{{ false }}">
+        <div style="border:1px solid #D5DDE0;border-radius:10px;padding:1.6rem 1.5rem;background:#F3F6F4">
+          <h2 style="font-size:1.02rem;font-weight:800;margin:0 0 .4rem;color:#1F4A29">お知らせを読み込めませんでした</h2>
+          <p style="font-size:.92rem;color:#5D6B74;margin:0;text-wrap:pretty">時間をおいて再度お試しください。お急ぎの場合は<a href="tel:0185-88-8732">0185-88-8732</a>までお問い合わせください。</p>
+        </div>
+      </sc-if>
+
+    </div>
+  </section>
+
+  <section style="background:#2F6B3C;color:#fff;text-align:center;padding:clamp(3.5rem,6vw,4.5rem) clamp(1.3rem,4vw,3rem)">
+    <div style="max-width:1120px;margin:0 auto">
+      <h2 style="font-size:clamp(1.3rem,3vw,1.8rem);font-weight:800;margin:0 0 .5rem;line-height:1.55">ご予約はこちらから</h2>
+      <p style="color:#D3E5D7;font-size:.95rem;margin:0 0 2rem">WEBまたはお電話で承ります。</p>
+      <div style="display:flex;flex-wrap:wrap;gap:.7rem .8rem;justify-content:center">
+        <a href="https://reservation.swingclubweb.com/5219/top" style="display:inline-block;text-decoration:none;font-weight:800;padding:1.05rem 2.4rem;border-radius:8px;background:#E0A526;color:#1B2A33;font-size:1.05rem" style-hover="background:#c9911f">WEBで予約する</a>
+        <a href="tel:0185-88-8732" style="display:inline-block;text-decoration:none;font-weight:800;padding:1.05rem 2.4rem;border-radius:8px;border:2px solid #fff;color:#fff" style-hover="background:rgba(255,255,255,.12)">0185-88-8732</a>
+      </div>
+    </div>
+  </section>
+
+  <dc-import name="SiteFooter" hint-size="100%,260px"></dc-import>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;sheetId&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;1UXE-iEhW5YAxPj9sSNGoU8fUnVB4nI2fYI5k9K3qCc4&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;スプレッドシート連携&quot;},&quot;sheetName&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;スプレッドシート連携&quot;}}">
+class Component extends DCLogic {
+  state = { items: null, failed: false };
+
+  componentDidMount() {
+    const id = this.props.sheetId ?? '1UXE-iEhW5YAxPj9sSNGoU8fUnVB4nI2fYI5k9K3qCc4';
+    // gviz のレスポンスはキャッシュされるため、毎回異なるパラメータを付けて
+    // 追加直後の行も拾えるようにする。
+    const url = 'https://docs.google.com/spreadsheets/d/' + id
+      + '/gviz/tq?tqx=out:csv&sheet=' + encodeURIComponent(this.props.sheetName ?? '')
+      + '&_=' + Date.now();
+    fetch(url, { cache: 'no-store' })
+      .then((r) => (r.ok ? r.text() : Promise.reject(r.status)))
+      .then((csv) => {
+        const rows = this._parseCsv(csv);
+        if (rows.length < 2) return Promise.reject('empty');
+        const head = rows[0].map((h) => h.trim());
+        const col = (name) => head.indexOf(name);
+        const iDate = col('日付'), iTitle = col('タイトル'), iBody = col('本文'),
+              iCat = col('カテゴリ'), iPub = col('公開');
+        const items = rows.slice(1)
+          .filter((r) => (r[iTitle] || '').trim() && /公開/.test(r[iPub] || ''))
+          .map((r) => ({
+            date: this._fmt(r[iDate]),
+            title: (r[iTitle] || '').trim(),
+            body: (r[iBody] || '').trim(),
+            category: (r[iCat] || 'お知らせ').trim(),
+          }))
+          .sort((a, b) => (a.date < b.date ? 1 : -1));
+        this.setState({ items });
+      })
+      .catch(() => this.setState({ failed: true }));
+  }
+
+  _parseCsv(text) {
+    const rows = [];
+    let row = [], cell = '', q = false;
+    for (let i = 0; i < text.length; i++) {
+      const c = text[i];
+      if (q) {
+        if (c === '"' && text[i + 1] === '"') { cell += '"'; i++; }
+        else if (c === '"') q = false;
+        else cell += c;
+      } else if (c === '"') q = true;
+      else if (c === ',') { row.push(cell); cell = ''; }
+      else if (c === '\n') { row.push(cell); rows.push(row); row = []; cell = ''; }
+      else if (c !== '\r') cell += c;
+    }
+    if (cell || row.length) { row.push(cell); rows.push(row); }
+    return rows.filter((r) => r.some((v) => (v || '').trim()));
+  }
+
+  _fmt(s) {
+    const t = (s || '').trim();
+    const m = t.match(/(\d{4})[-/](\d{1,2})[-/](\d{1,2})/);
+    if (!m) return t;
+    return m[1] + '.' + m[2].padStart(2, '0') + '.' + m[3].padStart(2, '0');
+  }
+
+  renderVals() {
+    const items = this.state.items;
+    return {
+      items: items || [],
+      hasItems: !!(items && items.length),
+      empty: !!(items && !items.length),
+      loading: !items && !this.state.failed,
+      failed: this.state.failed,
+    };
+  }
+}
+</script>
+</body>
+</html>
