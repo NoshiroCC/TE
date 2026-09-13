@@ -26,6 +26,10 @@ body{margin:0}
 a{color:#2F6B3C}
 a:hover{color:#1F4A29}
 :focus-visible{outline:3px solid #E0A526;outline-offset:2px}
+/* 列指定はここだけ。インラインにするとメディアクエリが効かない。 */
+#eventGrid{display:grid;gap:1.2rem;grid-template-columns:minmax(0,1fr)}
+@media (min-width:640px){#eventGrid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (min-width:1000px){#eventGrid{grid-template-columns:repeat(3,minmax(0,1fr))}}
 summary::-webkit-details-marker{display:none}
 </style>
 </helmet>
@@ -73,18 +77,32 @@ summary::-webkit-details-marker{display:none}
     <div style="max-width:1120px;margin:0 auto">
       <h2 style="font-size:clamp(1.3rem,3vw,1.8rem);font-weight:800;margin:0 0 .6rem;line-height:1.55">季節のイベント</h2>
       <p style="color:#5D6B74;font-size:.95rem;margin:0 0 2rem;max-width:38em;text-wrap:pretty">開催予定は決まり次第、順次掲載いたします。</p>
-      <div style="display:grid;gap:1.1rem;grid-template-columns:repeat(auto-fit,minmax(260px,1fr))">
-        <div style="background:#fff;border:2px solid #E0A526;border-radius:10px;padding:1.5rem 1.4rem">
-          <div style="display:inline-block;background:#E0A526;color:#1B2A33;font-size:.75rem;font-weight:800;padding:.2rem .6rem;border-radius:999px;margin-bottom:.6rem">受付中</div>
-          <div style="font-size:.84rem;font-weight:800;color:#2F6B3C">2026年10月17日（土）</div>
-          <h3 style="font-size:1.08rem;font-weight:800;margin:.2rem 0 .45rem;color:#1F4A29">鍋祭りコンペ</h3>
-          <p style="font-size:.9rem;color:#5D6B74;margin:0;text-wrap:pretty">毎年恒例の鍋祭りコンペです。プレー後に温かい鍋をご用意してお待ちしています。</p>
-        </div>
-        <div style="background:#fff;border:1px dashed #D5DDE0;border-radius:10px;padding:1.5rem 1.4rem;color:#5D6B74;font-size:.92rem">
-          <h3 style="font-size:1rem;font-weight:800;margin:0 0 .3rem;color:#1F4A29">初心者向けオープンイベント</h3>
-          <p style="margin:0;text-wrap:pretty">スナッグゴルフの体験ブースなど、はじめての方向けの催しを定期的に開いています。日程は決まり次第掲載します。</p>
-        </div>
+
+      <div id="eventGrid">
+        <sc-for list="{{ events }}" as="e" hint-placeholder-count="3">
+          <div style="background:#fff;border:1px solid #D5DDE0;border-radius:12px;overflow:hidden;display:flex;flex-direction:column">
+            <div style="position:relative;aspect-ratio:16/9;background:#EAF2EB;overflow:hidden">{{ e.image }}</div>
+            <div style="padding:1.3rem 1.4rem 1.5rem;display:flex;flex-direction:column;flex:1">
+              <sc-if value="{{ e.hasStatus }}" hint-placeholder-val="{{ true }}">
+                <div style="display:inline-block;align-self:flex-start;background:#E0A526;color:#1B2A33;font-size:.75rem;font-weight:800;padding:.2rem .65rem;border-radius:999px;margin-bottom:.6rem">{{ e.status }}</div>
+              </sc-if>
+              <div style="font-size:.84rem;font-weight:800;color:#2F6B3C">{{ e.date }}</div>
+              <h3 style="font-size:1.08rem;font-weight:800;margin:.2rem 0 .45rem;color:#1F4A29;line-height:1.45">{{ e.title }}</h3>
+              <p style="font-size:.9rem;color:#5D6B74;margin:0 0 1.1rem;text-wrap:pretty">{{ e.body }}</p>
+              <sc-if value="{{ e.hasLink }}" hint-placeholder-val="{{ false }}">
+                <a href="{{ e.link }}" style="margin-top:auto;align-self:flex-start;text-decoration:none;font-weight:800;font-size:.88rem;padding:.7rem 1.4rem;border-radius:8px;background:#2F6B3C;color:#fff" style-hover="background:#1F4A29">{{ e.linkLabel }}</a>
+              </sc-if>
+            </div>
+          </div>
+        </sc-for>
       </div>
+
+      <sc-if value="{{ noEvents }}" hint-placeholder-val="{{ false }}">
+        <div style="background:#fff;border:1px dashed #D5DDE0;border-radius:10px;padding:1.5rem 1.4rem;color:#5D6B74;font-size:.92rem">
+          <h3 style="font-size:1rem;font-weight:800;margin:0 0 .3rem;color:#1F4A29">開催予定のイベントはありません</h3>
+          <p style="margin:0;text-wrap:pretty">初心者向けオープンイベントやスナッグゴルフの体験ブースなど、催しを定期的に開いています。日程は決まり次第こちらに掲載します。</p>
+        </div>
+      </sc-if>
     </div>
   </section>
 
@@ -152,5 +170,122 @@ summary::-webkit-details-marker{display:none}
   <dc-import name="SiteFooter" hint-size="100%,260px"></dc-import>
 </div>
 </x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;sheetId&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;1X06MLc63cINzuQkC8CrFsPwA8S32WGPARvP91iU6o-E&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;スプレッドシート&quot;},&quot;sheetName&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;スプレッドシート&quot;}}">
+// 03_コンペ・イベント予定
+const SHEET_ID = '1X06MLc63cINzuQkC8CrFsPwA8S32WGPARvP91iU6o-E';
+const WDAY = ['日', '月', '火', '水', '木', '金', '土'];
+
+class Component extends DCLogic {
+  state = { rows: null, failed: false };
+
+  componentDidMount() {
+    const id = this.props.sheetId ?? SHEET_ID;
+    const url = 'https://docs.google.com/spreadsheets/d/' + id
+      + '/gviz/tq?tqx=out:csv&sheet=' + encodeURIComponent(this.props.sheetName ?? '')
+      + '&_=' + Date.now();
+    fetch(url, { cache: 'no-store' })
+      .then((r) => (r.ok ? r.text() : Promise.reject(r.status)))
+      .then((csv) => {
+        const rows = this._parseCsv(csv);
+        // 先頭に空行が入ることがあるため、見出し行を探してから読む
+        const hi = rows.findIndex((r) => r.some((v) => (v || '').trim() === '開催日'));
+        if (hi < 0) return Promise.reject('no-header');
+        const head = rows[hi].map((h) => h.trim());
+        const col = (n) => head.indexOf(n);
+        const iPub = col('公開'), iDate = col('開催日'), iTitle = col('名称'),
+              iBody = col('内容'), iStatus = col('募集状況'),
+              iImg = col('画像URL'), iLink = col('申込URL'), iId = col('ID');
+        const items = rows.slice(hi + 1)
+          .filter((r) => (r[iTitle] || '').trim() && /公開/.test(r[iPub] || ''))
+          .map((r) => ({
+            date: this._formatDate((r[iDate] || '').trim()),
+            title: (r[iTitle] || '').trim(),
+            body: (r[iBody] || '').trim(),
+            status: iStatus < 0 ? '' : (r[iStatus] || '').trim(),
+            img: iImg < 0 ? '' : this._imageUrl((r[iImg] || '').trim()),
+            // ID があれば詳細ページへ。無ければ申込URL（あれば）へ。
+            link: (() => {
+              const eid = iId < 0 ? '' : (r[iId] || '').trim();
+              if (eid) return 'event.html?id=' + encodeURIComponent(eid);
+              return iLink < 0 ? '' : (r[iLink] || '').trim();
+            })(),
+            isDetail: iId >= 0 && !!(r[iId] || '').trim(),
+          }));
+        this.setState({ rows: items });
+      })
+      .catch(() => this.setState({ failed: true }));
+  }
+
+  // 2026-10-17 のような入力を「2026年10月17日（土）」に整える。
+  // それ以外の書き方はそのまま表示する。
+  _formatDate(raw) {
+    const m = raw.match(/^(\d{4})[-/](\d{1,2})[-/](\d{1,2})$/);
+    if (!m) return raw;
+    const d = new Date(Number(m[1]), Number(m[2]) - 1, Number(m[3]));
+    return m[1] + '年' + Number(m[2]) + '月' + Number(m[3]) + '日（' + WDAY[d.getDay()] + '）';
+  }
+
+  // Google ドライブの共有リンクを、そのまま表示できる画像URLに変換する。
+  // スタッフは「リンクをコピー」で得たURLを貼るだけでよい。
+  _imageUrl(raw) {
+    if (!raw) return '';
+    const m = raw.match(/\/file\/d\/([A-Za-z0-9_-]{20,})/) || raw.match(/[?&]id=([A-Za-z0-9_-]{20,})/);
+    if (m) return 'https://lh3.googleusercontent.com/d/' + m[1] + '=w1200';
+    return raw;
+  }
+
+  _parseCsv(text) {
+    const rows = [];
+    let row = [], cell = '', q = false;
+    for (let i = 0; i < text.length; i++) {
+      const c = text[i];
+      if (q) {
+        if (c === '"' && text[i + 1] === '"') { cell += '"'; i++; }
+        else if (c === '"') q = false;
+        else cell += c;
+      } else if (c === '"') q = true;
+      else if (c === ',') { row.push(cell); cell = ''; }
+      else if (c === '\n') { row.push(cell); rows.push(row); row = []; cell = ''; }
+      else if (c !== '\r') cell += c;
+    }
+    if (cell || row.length) { row.push(cell); rows.push(row); }
+    return rows.filter((r) => r.some((v) => (v || '').trim()));
+  }
+
+  renderVals() {
+    const rows = this.state.rows || [];
+    const ph = 'repeating-linear-gradient(135deg,rgba(47,107,60,.07) 0 10px,transparent 10px 20px),#EAF2EB';
+    return {
+      noEvents: !!this.state.failed || (this.state.rows !== null && rows.length === 0),
+      events: rows.map((e, i) => ({
+        ...e,
+        hasStatus: !!e.status,
+        hasLink: !!e.link,
+        linkLabel: e.isDetail ? '詳細を見る' : 'お申し込みへ',
+        // 画像はシートの値で決まるため要素ごと生成する（テンプレートの穴に
+        // src を置くと解決前に文字列のまま出力されてしまう）
+        image: e.img
+          ? React.createElement('img', {
+              key: e.img,
+              src: e.img,
+              alt: e.title,
+              loading: i > 1 ? 'lazy' : undefined,
+              style: {
+                position: 'absolute', inset: 0, width: '100%', height: '100%',
+                objectFit: 'cover', display: 'block',
+              },
+            })
+          : React.createElement('div', {
+              style: {
+                position: 'absolute', inset: 0, background: ph,
+                display: 'flex', alignItems: 'center', justifyContent: 'center',
+                fontSize: 12, color: '#5D6B74',
+              },
+            }, '写真は準備中です'),
+      })),
+    };
+  }
+}
+</script>
 </body>
 </html>

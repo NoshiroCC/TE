@@ -100,7 +100,7 @@ img{max-width:100%}
   </div>
 
   <sc-if value="{{ showAlert }}" hint-placeholder-val="{{ true }}">
-    <div style="background:#E0A526;color:#fff;font-weight:700;padding:.9rem 1.3rem;text-align:center;font-size:.95rem">10月17日（土）鍋祭りコンペ 参加者受付中　<a href="events.html" style="color:#fff">詳しく見る</a></div>
+    <div style="background:#E0A526;color:#1B2A33;font-weight:700;padding:.9rem 1.3rem;text-align:center;font-size:.95rem">{{ alertText }}　<a href="{{ alertLink }}" style="color:#1B2A33;font-weight:800">詳しく見る</a></div>
   </sc-if>
 
   <section style="background:#EAF2EB;padding:clamp(3.8rem,6vw,5rem) clamp(1.3rem,4vw,3rem)">
@@ -133,36 +133,18 @@ img{max-width:100%}
       <h2 style="font-size:clamp(1.35rem,3vw,1.9rem);font-weight:800;margin:0 0 .6rem;line-height:1.55">料金の目安</h2>
       <p style="color:#5D6B74;font-size:.95rem;margin:0 0 2rem;max-width:38em">1ラウンドセルフプレー、昼食つき（1,100円分）の税込料金です。季節により変動する場合がありますので、確定金額は予約時にご確認ください。</p>
       <div style="display:grid;gap:1.1rem;grid-template-columns:repeat(auto-fit,minmax(240px,1fr))">
-        <div style="border:2px solid #2F6B3C;background:#EAF2EB;border-radius:10px;padding:1.6rem 1.4rem;display:flex;flex-direction:column">
-          <div style="font-size:.85rem;font-weight:800;color:#2F6B3C">友の会（メンバー）</div>
-          <div style="font-size:2.2rem;font-weight:800;line-height:1.25;margin:.4rem 0 .1rem">6,900<small style="font-size:.95rem;font-weight:700;color:#5D6B74">円</small></div>
-          <div style="font-size:.86rem;color:#5D6B74">平日・土日祝とも同額</div>
-          <ul style="list-style:none;margin:1rem 0 0;padding:0;font-size:.88rem">
-            <li style="padding-left:1.3rem;position:relative;margin-bottom:.3rem"><span style="position:absolute;left:0;color:#2F6B3C;font-weight:800">✓</span>昼食付き</li>
-            <li style="padding-left:1.3rem;position:relative;margin-bottom:.3rem"><span style="position:absolute;left:0;color:#2F6B3C;font-weight:800">✓</span>セルフプレー</li>
-            <li style="padding-left:1.3rem;position:relative;margin-bottom:.3rem"><span style="position:absolute;left:0;color:#2F6B3C;font-weight:800">✓</span>カート乗り入れ可</li>
-          </ul>
-        </div>
-        <div style="border:1px solid #D5DDE0;border-radius:10px;padding:1.6rem 1.4rem;display:flex;flex-direction:column">
-          <div style="font-size:.85rem;font-weight:800;color:#2F6B3C">ゲスト・平日</div>
-          <div style="font-size:2.2rem;font-weight:800;line-height:1.25;margin:.4rem 0 .1rem">8,500<small style="font-size:.95rem;font-weight:700;color:#5D6B74">円</small></div>
-          <div style="font-size:.86rem;color:#5D6B74">通常プレー</div>
-          <ul style="list-style:none;margin:1rem 0 0;padding:0;font-size:.88rem">
-            <li style="padding-left:1.3rem;position:relative;margin-bottom:.3rem"><span style="position:absolute;left:0;color:#2F6B3C;font-weight:800">✓</span>昼食付き</li>
-            <li style="padding-left:1.3rem;position:relative;margin-bottom:.3rem"><span style="position:absolute;left:0;color:#2F6B3C;font-weight:800">✓</span>セルフプレー</li>
-            <li style="padding-left:1.3rem;position:relative;margin-bottom:.3rem"><span style="position:absolute;left:0;color:#2F6B3C;font-weight:800">✓</span>早朝・夕暮なら 6,600円</li>
-          </ul>
-        </div>
-        <div style="border:1px solid #D5DDE0;border-radius:10px;padding:1.6rem 1.4rem;display:flex;flex-direction:column">
-          <div style="font-size:.85rem;font-weight:800;color:#2F6B3C">ゲスト・土日祝</div>
-          <div style="font-size:2.2rem;font-weight:800;line-height:1.25;margin:.4rem 0 .1rem">11,000<small style="font-size:.95rem;font-weight:700;color:#5D6B74">円</small></div>
-          <div style="font-size:.86rem;color:#5D6B74">通常プレー</div>
-          <ul style="list-style:none;margin:1rem 0 0;padding:0;font-size:.88rem">
-            <li style="padding-left:1.3rem;position:relative;margin-bottom:.3rem"><span style="position:absolute;left:0;color:#2F6B3C;font-weight:800">✓</span>昼食付き</li>
-            <li style="padding-left:1.3rem;position:relative;margin-bottom:.3rem"><span style="position:absolute;left:0;color:#2F6B3C;font-weight:800">✓</span>セルフプレー</li>
-            <li style="padding-left:1.3rem;position:relative;margin-bottom:.3rem"><span style="position:absolute;left:0;color:#2F6B3C;font-weight:800">✓</span>コンペプラン相談可</li>
-          </ul>
-        </div>
+        <sc-for list="{{ priceCards }}" as="p" hint-placeholder-count="3">
+          <div style="{{ p.cardStyle }}">
+            <div style="font-size:.85rem;font-weight:800;color:#2F6B3C">{{ p.name }}</div>
+            <div style="font-size:2.2rem;font-weight:800;line-height:1.25;margin:.4rem 0 .1rem">{{ p.fee }}<small style="font-size:.95rem;font-weight:700;color:#5D6B74">円</small></div>
+            <div style="font-size:.86rem;color:#5D6B74">{{ p.note }}</div>
+            <ul style="list-style:none;margin:1rem 0 0;padding:0;font-size:.88rem">
+              <li style="padding-left:1.3rem;position:relative;margin-bottom:.3rem"><span style="position:absolute;left:0;color:#2F6B3C;font-weight:800">✓</span>昼食つき（1,100円分）</li>
+              <li style="padding-left:1.3rem;position:relative;margin-bottom:.3rem"><span style="position:absolute;left:0;color:#2F6B3C;font-weight:800">✓</span>1ラウンドセルフプレー</li>
+              <li style="padding-left:1.3rem;position:relative;margin-bottom:.3rem"><span style="position:absolute;left:0;color:#2F6B3C;font-weight:800">✓</span>終日カート乗り入れ可</li>
+            </ul>
+          </div>
+        </sc-for>
       </div>
       <p style="font-size:.84rem;color:#5D6B74;margin:1.2rem 0 0">※ ジュニア（18歳以下）は500円。ハローキャディご利用でプレー料金から1,000円引き。ハーフスルー・追加ハーフや割増の条件は料金プランページに掲載しています。</p>
       <a href="price.html" style="display:inline-block;margin-top:1.6rem;font-weight:700;color:#2F6B3C;border-bottom:2px solid #2F6B3C;text-decoration:none;padding-bottom:2px">料金・プランをすべて見る</a>
@@ -310,7 +292,7 @@ img{max-width:100%}
       </div>
       <div style="display:flex;justify-content:center">
         <div style="background:#fff;padding:1.1rem;border-radius:12px;display:flex;flex-direction:column;align-items:center;gap:.6rem">
-          <div style="width:100%;height:100%;min-height:inherit;display:flex;align-items:center;justify-content:center;text-align:center;padding:1rem;box-sizing:border-box;font-size:12px;line-height:1.7;color:#5D6B74;background:repeating-linear-gradient(135deg,rgba(47,107,60,.07) 0 10px,transparent 10px 20px),#EAF2EB">LINE友だち追加QR</div>
+          <a href="https://lin.ee/a6iafb8" style="display:block;line-height:0"><img src="./images/line-qr.png" alt="公式LINE 友だち追加QRコード" style="width:150px;height:150px;display:block"></a>
           <div style="font-size:.78rem;font-weight:700;color:#5D6B74">QRコードで追加</div>
         </div>
       </div>
@@ -420,6 +402,13 @@ img{max-width:100%}
           <a href="https://www.facebook.com/noshirocc" style="color:#2F6B3C">Facebook</a>
           <a href="https://lin.ee/a6iafb8" style="color:#2F6B3C">公式LINE</a>
         </div>
+        <div style="display:flex;align-items:center;gap:.9rem;margin-top:1.3rem">
+          <a href="https://lin.ee/a6iafb8" style="display:block;flex:0 0 auto;line-height:0"><img src="./images/line-qr.png" alt="公式LINE 友だち追加QRコード" style="width:84px;height:84px;display:block;background:#fff;border:1px solid #D5DDE0;border-radius:6px;padding:4px;box-sizing:border-box"></a>
+          <div style="font-size:.82rem;line-height:1.7">
+            <div style="font-weight:800;color:#06843A">公式LINE</div>
+            お得な情報とイベントのご案内をお届けします。<br>QRコードを読み取るか、<a href="https://lin.ee/a6iafb8" style="color:#2F6B3C;font-weight:700">こちらから友だち追加</a>。
+          </div>
+        </div>
       </div>
       <div style="display:flex;flex-wrap:wrap;gap:.7rem 1.3rem;font-weight:600;align-content:flex-start">
         <a href="about.html" style="color:#2F6B3C">魅力</a>
@@ -454,7 +443,90 @@ img{max-width:100%}
 </x-dc>
 <script type="text/x-dc" data-dc-script data-props="{&quot;heroMode&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;photo&quot;,&quot;carousel&quot;,&quot;video&quot;],&quot;default&quot;:&quot;video&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;トップの画像&quot;},&quot;heroImages&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;./images/hero-manager.jpg, ./images/hero-green.jpg, ./images/hero-header1.jpg&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;トップの画像&quot;},&quot;heroInterval&quot;:{&quot;editor&quot;:&quot;int&quot;,&quot;default&quot;:5,&quot;min&quot;:2,&quot;max&quot;:20,&quot;unit&quot;:&quot;秒&quot;,&quot;tsType&quot;:&quot;number&quot;,&quot;section&quot;:&quot;トップの画像&quot;},&quot;showAlert&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;表示切替&quot;},&quot;showMobileBar&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:false,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;表示切替&quot;}}">
 class Component extends DCLogic {
-  state = { slide: 0 };
+  // スタッフが更新するスプレッドシート
+  static SHEET_ALERT = '1_lgAlUxGqf0GGhNW52gTR8wu5i3NRc_M2mKbFi6LXFU'; // 04_トップ告知バー
+  static SHEET_PRICE = '1po3dvURk3_sr8ToH5SAGsZRqTAKf9T7Xv0wCg4TYf60'; // 02_料金表
+
+  // シートが読めない場合もページが成立するよう、既定値を持たせておく
+  static DEFAULT_PRICES = [
+    { name: '友の会（メンバー）', fee: 6900, note: '平日・土日祝とも同額', order: 1 },
+    { name: 'ゲスト・平日', fee: 8500, note: '通常プレー', order: 2 },
+    { name: 'ゲスト・土日祝', fee: 11000, note: '通常プレー', order: 3 },
+  ];
+
+  state = { slide: 0, alert: null, prices: Component.DEFAULT_PRICES };
+
+  _csvUrl(id) {
+    return 'https://docs.google.com/spreadsheets/d/' + id
+      + '/gviz/tq?tqx=out:csv&_=' + Date.now();
+  }
+
+  _loadSheet(id, headerKey) {
+    return fetch(this._csvUrl(id), { cache: 'no-store' })
+      .then((r) => (r.ok ? r.text() : Promise.reject(r.status)))
+      .then((csv) => {
+        const rows = this._parseCsv(csv);
+        // 先頭に空行が入ることがあるため見出し行を探す
+        const hi = rows.findIndex((r) => r.some((v) => (v || '').trim() === headerKey));
+        if (hi < 0) return Promise.reject('no-header');
+        const head = rows[hi].map((h) => h.trim());
+        return { head, body: rows.slice(hi + 1) };
+      });
+  }
+
+  _parseCsv(text) {
+    const rows = [];
+    let row = [], cell = '', q = false;
+    for (let i = 0; i < text.length; i++) {
+      const c = text[i];
+      if (q) {
+        if (c === '"' && text[i + 1] === '"') { cell += '"'; i++; }
+        else if (c === '"') q = false;
+        else cell += c;
+      } else if (c === '"') q = true;
+      else if (c === ',') { row.push(cell); cell = ''; }
+      else if (c === '\n') { row.push(cell); rows.push(row); row = []; cell = ''; }
+      else if (c !== '\r') cell += c;
+    }
+    if (cell || row.length) { row.push(cell); rows.push(row); }
+    return rows.filter((r) => r.some((v) => (v || '').trim()));
+  }
+
+  _loadAlert() {
+    this._loadSheet(Component.SHEET_ALERT, '文言').then(({ head, body }) => {
+      const c = (n) => head.indexOf(n);
+      const iText = c('文言'), iUrl = c('リンク先URL'),
+            iFrom = c('表示開始日'), iTo = c('表示終了日'), iPub = c('公開');
+      const today = new Date().toISOString().slice(0, 10);
+      const hit = body.find((r) => {
+        if (!(r[iText] || '').trim() || !/公開/.test(r[iPub] || '')) return false;
+        const from = (r[iFrom] || '').trim(), to = (r[iTo] || '').trim();
+        if (from && today < from) return false;
+        if (to && today > to) return false;
+        return true;
+      });
+      if (hit) this.setState({ alert: { text: hit[iText].trim(), link: (hit[iUrl] || '').trim() } });
+      else this.setState({ alert: false });
+    }).catch(() => this.setState({ alert: false }));
+  }
+
+  _loadPrices() {
+    this._loadSheet(Component.SHEET_PRICE, '区分').then(({ head, body }) => {
+      const c = (n) => head.indexOf(n);
+      const iName = c('区分'), iFee = c('料金'), iNote = c('補足'),
+            iOrder = c('表示順'), iPub = c('公開');
+      const items = body
+        .filter((r) => (r[iName] || '').trim() && /公開/.test(r[iPub] || ''))
+        .map((r) => ({
+          name: (r[iName] || '').trim(),
+          fee: Number(String(r[iFee] || '').replace(/[^\d.]/g, '')) || 0,
+          note: iNote < 0 ? '' : (r[iNote] || '').trim(),
+          order: Number(r[iOrder]) || 0,
+        }))
+        .sort((a, b) => a.order - b.order);
+      if (items.length) this.setState({ prices: items });
+    }).catch(() => {});
+  }
 
   _images() {
     // 1枚目は背景の固定画像と同じものにする（起動直後に切り替わって見えるのを防ぐ）
@@ -464,6 +536,8 @@ class Component extends DCLogic {
   }
 
   componentDidMount() {
+    this._loadAlert();
+    this._loadPrices();
     // ブラウザが autoPlay を弾いた場合の保険。muted なので再生は許可される。
     const v = this._video;
     if (v && v.paused) { const p = v.play(); if (p && p.catch) p.catch(() => {}); }
@@ -506,7 +580,20 @@ class Component extends DCLogic {
       : null;
 
     return {
-      showAlert: this.props.showAlert ?? true,
+      // 告知バーはシートの公開設定と表示期間で決まる
+      showAlert: (this.props.showAlert ?? true) && !!this.state.alert,
+      alertText: this.state.alert ? this.state.alert.text : '',
+      alertLink: this.state.alert && this.state.alert.link ? this.state.alert.link : 'events.html',
+      priceCards: (this.state.prices || []).map((p, i) => ({
+        name: p.name,
+        fee: p.fee.toLocaleString(),
+        note: p.note,
+        // 先頭（友の会）だけ強調する。実行時に決まるためここで組み立てる。
+        cardStyle: 'border-radius:10px;padding:1.6rem 1.4rem;display:flex;flex-direction:column;'
+          + (i === 0
+            ? 'border:2px solid #2F6B3C;background:#EAF2EB;'
+            : 'border:1px solid #D5DDE0;'),
+      })),
       showMobileBar: this.props.showMobileBar ?? false,
       // images/hero.mp4 を置いたら heroMode を video にすると動画に切り替わる
       useHeroVideo: mode === 'video',
