@@ -6,14 +6,14 @@
 <script src="./support.js"></script>
 <meta name="robots" content="noindex, nofollow">
 <title>料金プラン｜能代カントリークラブ</title>
-<meta name="description" content="1Rセルフ・昼食つきで友の会6,900円、ゲスト平日8,500円・土日祝11,000円。早朝・夕暮プラン、ハーフスルー、ジュニア料金もご用意しています。">
+<meta name="description" content="通常料金、お得なプラン、昼食付きプラン、2サム・3サムのエキストラチャージ、イベントのご案内。表示はすべて税込です。">
 <link rel="canonical" href="https://noshirocc.dry-surf-609b.workers.dev/price.html">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="能代カントリークラブ">
 <meta property="og:url" content="https://noshirocc.dry-surf-609b.workers.dev/price.html">
 <meta property="og:title" content="料金プラン｜能代カントリークラブ">
-<meta property="og:description" content="1Rセルフ・昼食つきで友の会6,900円、ゲスト平日8,500円・土日祝11,000円。早朝・夕暮プラン、ハーフスルー、ジュニア料金もご用意しています。">
-<meta property="og:image" content="https://noshirocc.dry-surf-609b.workers.dev/images/hero-manager.jpg">
+<meta property="og:description" content="通常料金、お得なプラン、昼食付きプラン、2サム・3サムのエキストラチャージ、イベントのご案内。表示はすべて税込です。">
+<meta property="og:image" content="https://noshirocc.dry-surf-609b.workers.dev/images/hero-green.jpg">
 <meta property="og:locale" content="ja_JP">
 <meta name="twitter:card" content="summary_large_image">
 <style id="publish-scroll-fix">html,body{height:auto!important;min-height:100%}#dc-root,#dc-root>.sc-host{height:auto!important}</style>
@@ -42,6 +42,15 @@ a:hover{color:#1F4A29}
       <p style="margin:.8rem 0 0;font-size:1rem;color:#fff;max-width:38em;text-shadow:0 1px 12px rgba(0,0,0,.55)">表示はすべて税込です。季節により変動する場合がありますので、確定金額は予約時にご確認ください。</p>
     </div>
   </div>
+
+  <nav style="border-bottom:1px solid #D5DDE0;background:#F3F6F4;padding:1rem clamp(1.3rem,4vw,3rem)">
+    <div style="max-width:1120px;margin:0 auto;display:flex;flex-wrap:wrap;gap:.6rem .9rem;font-size:.88rem;font-weight:700">
+      <a href="#deals" style="text-decoration:none;color:#2F6B3C;border:1px solid #D5DDE0;background:#fff;border-radius:999px;padding:.45rem 1.05rem" style-hover="border-color:#2F6B3C">お得なプラン</a>
+      <a href="#lunch" style="text-decoration:none;color:#2F6B3C;border:1px solid #D5DDE0;background:#fff;border-radius:999px;padding:.45rem 1.05rem" style-hover="border-color:#2F6B3C">昼食付きプラン</a>
+      <a href="#extra" style="text-decoration:none;color:#2F6B3C;border:1px solid #D5DDE0;background:#fff;border-radius:999px;padding:.45rem 1.05rem" style-hover="border-color:#2F6B3C">エキストラチャージ</a>
+      <a href="#event" style="text-decoration:none;color:#2F6B3C;border:1px solid #D5DDE0;background:#fff;border-radius:999px;padding:.45rem 1.05rem" style-hover="border-color:#2F6B3C">イベント</a>
+    </div>
+  </nav>
 
   <section style="padding:clamp(3.2rem,5vw,4.5rem) clamp(1.3rem,4vw,3rem)">
     <div style="max-width:1120px;margin:0 auto">
@@ -77,6 +86,128 @@ a:hover{color:#1F4A29}
         <li style="padding-left:1rem;position:relative"><span style="position:absolute;left:0">・</span>自動追尾キャディーマシン Hello Caddy をご利用の場合、プレー料金より1,000円引きとなります。</li>
       </ul>
       <a href="https://reservation.swingclubweb.com/5219/top" style="display:inline-block;margin-top:1.5rem;text-decoration:none;font-weight:800;padding:.9rem 2rem;border-radius:8px;background:#E0A526;color:#fff" style-hover="background:#c9911f">WEBご予約はこちらから</a>
+    </div>
+  </section>
+
+  <section id="deals" style="background:#F3F6F4;padding:clamp(3.2rem,5vw,4.5rem) clamp(1.3rem,4vw,3rem);scroll-margin-top:90px">
+    <div style="max-width:1120px;margin:0 auto">
+      <div style="display:flex;flex-wrap:wrap;align-items:baseline;gap:.6rem 1rem">
+        <h2 style="font-size:clamp(1.3rem,3vw,1.8rem);font-weight:800;margin:0;line-height:1.55;white-space:nowrap">お得なプラン</h2>
+        <span style="font-size:.86rem;font-weight:700;color:#5D6B74">期間限定のご案内</span>
+      </div>
+      <p style="color:#5D6B74;font-size:.95rem;margin:.7rem 0 1.8rem;max-width:40em;text-wrap:pretty">季節ごとのキャンペーンや限定プランを掲載しています。内容は随時入れ替わりますので、ご予約前にご確認ください。</p>
+
+      <sc-if value="{{ plansLoading }}" hint-placeholder-val="{{ true }}">
+        <div style="display:grid;gap:1.2rem;grid-template-columns:repeat(auto-fit,minmax(260px,1fr))">
+          <div style="background:#fff;border:1px solid #D5DDE0;border-radius:10px;overflow:hidden"><div style="min-height:160px;background:#EAF2EB"></div><div style="padding:1.1rem 1.2rem 1.3rem"><div style="height:.7rem;width:35%;background:#E6EEF1;border-radius:3px"></div><div style="height:.9rem;width:85%;background:#E6EEF1;border-radius:3px;margin-top:.7rem"></div><div style="height:.9rem;width:60%;background:#E6EEF1;border-radius:3px;margin-top:.45rem"></div></div></div>
+          <div style="background:#fff;border:1px solid #D5DDE0;border-radius:10px;overflow:hidden"><div style="min-height:160px;background:#EAF2EB"></div><div style="padding:1.1rem 1.2rem 1.3rem"><div style="height:.7rem;width:35%;background:#E6EEF1;border-radius:3px"></div><div style="height:.9rem;width:85%;background:#E6EEF1;border-radius:3px;margin-top:.7rem"></div><div style="height:.9rem;width:60%;background:#E6EEF1;border-radius:3px;margin-top:.45rem"></div></div></div>
+          <div style="background:#fff;border:1px solid #D5DDE0;border-radius:10px;overflow:hidden"><div style="min-height:160px;background:#EAF2EB"></div><div style="padding:1.1rem 1.2rem 1.3rem"><div style="height:.7rem;width:35%;background:#E6EEF1;border-radius:3px"></div><div style="height:.9rem;width:85%;background:#E6EEF1;border-radius:3px;margin-top:.7rem"></div><div style="height:.9rem;width:60%;background:#E6EEF1;border-radius:3px;margin-top:.45rem"></div></div></div>
+        </div>
+      </sc-if>
+
+      <sc-if value="{{ hasPlans }}" hint-placeholder-val="{{ false }}">
+        <div style="display:grid;gap:1.2rem;grid-template-columns:repeat(auto-fit,minmax(260px,1fr))">
+          <sc-for list="{{ plans }}" as="plan" hint-placeholder-count="0">
+            <a href="{{ plan.link }}" target="_blank" rel="noopener" style="text-decoration:none;color:inherit;background:#fff;border:1px solid #D5DDE0;border-radius:10px;overflow:hidden;display:flex;flex-direction:column" style-hover="border-color:#2F6B3C">
+              <div style="min-height:160px;position:relative;background:repeating-linear-gradient(135deg,rgba(47,107,60,.07) 0 10px,transparent 10px 20px),#EAF2EB">{{ plan.imageEl }}</div>
+              <div style="padding:1.1rem 1.2rem 1.3rem;display:flex;flex-direction:column;gap:.45rem;flex:1">
+                <div style="font-size:.78rem;color:#5D6B74;font-weight:700">{{ plan.date }}</div>
+                <h3 style="font-size:1.02rem;font-weight:800;line-height:1.6;margin:0;color:#1F4A29;text-wrap:pretty">{{ plan.title }}</h3>
+                <p style="font-size:.88rem;color:#5D6B74;margin:0;text-wrap:pretty">{{ plan.excerpt }}</p>
+                <span style="font-size:.84rem;font-weight:700;color:#2F6B3C;margin-top:auto;padding-top:.5rem">詳しく見る →</span>
+              </div>
+            </a>
+          </sc-for>
+        </div>
+      </sc-if>
+
+      <sc-if value="{{ plansEmpty }}" hint-placeholder-val="{{ false }}">
+        <div style="background:#fff;border:1px solid #D5DDE0;border-radius:10px;padding:1.6rem 1.5rem">
+          <h3 style="font-size:1.02rem;font-weight:800;margin:0 0 .4rem;color:#1F4A29">いまご案内できる限定プランはありません</h3>
+          <p style="font-size:.92rem;color:#5D6B74;margin:0;text-wrap:pretty">新しいプランが決まりしだい、こちらに掲載します。通常料金は上の表をご覧ください。</p>
+        </div>
+      </sc-if>
+    </div>
+  </section>
+
+  <section id="lunch" style="padding:clamp(3.2rem,5vw,4.5rem) clamp(1.3rem,4vw,3rem);scroll-margin-top:90px">
+    <div style="max-width:1120px;margin:0 auto;display:grid;gap:clamp(1.8rem,3vw,3rem);grid-template-columns:repeat(auto-fit,minmax(300px,1fr));align-items:center">
+      <div>
+        <div style="display:flex;flex-wrap:wrap;align-items:baseline;gap:.6rem 1rem">
+          <h2 style="font-size:clamp(1.3rem,3vw,1.8rem);font-weight:800;margin:0;line-height:1.55;white-space:nowrap">昼食付きプラン</h2>
+          <span style="font-size:.86rem;font-weight:700;color:#5D6B74">1Rセルフプラン／全日</span>
+        </div>
+        <p style="color:#5D6B74;font-size:.95rem;margin:.7rem 0 1.2rem;max-width:34em;text-wrap:pretty">通常料金の1Rセルフプランには、全日1,100円分のお食事が含まれています。レストランで日替わりのメニューからお選びいただけます。差額が出た場合はフロントにて精算いたします。</p>
+        <div style="display:grid;gap:.5rem;font-size:.92rem;max-width:34em">
+          <div style="display:grid;grid-template-columns:8em 1fr;gap:.6rem"><span style="color:#5D6B74;font-weight:700">対象プラン</span><span>1Rセルフプラン（友の会・ゲストとも）</span></div>
+          <div style="display:grid;grid-template-columns:8em 1fr;gap:.6rem"><span style="color:#5D6B74;font-weight:700">お食事</span><span>1,100円分／地元の食材を使った日替わり</span></div>
+          <div style="display:grid;grid-template-columns:8em 1fr;gap:.6rem"><span style="color:#5D6B74;font-weight:700">対象外</span><span>ハーフ・スルー、早朝・夕暮プランはお食事別となります</span></div>
+        </div>
+        <a href="shirakamiterrace.html" style="display:inline-block;margin-top:1.4rem;font-weight:700;color:#2F6B3C;border-bottom:2px solid #2F6B3C;text-decoration:none;padding-bottom:2px;font-size:.93rem">レストランのメニューを見る</a>
+      </div>
+      <div style="position:relative;min-height:280px;border-radius:8px;overflow:hidden">
+        <div style="width:100%;height:100%;min-height:inherit;display:flex;align-items:center;justify-content:center;text-align:center;padding:1rem;box-sizing:border-box;font-size:12px;line-height:1.7;color:#5D6B74;background:repeating-linear-gradient(135deg,rgba(47,107,60,.07) 0 10px,transparent 10px 20px),#EAF2EB">日替わりランチまたはレストランの一皿。横位置1600×1200px推奨</div>
+      </div>
+    </div>
+  </section>
+
+  <section id="extra" style="background:#EAF2EB;padding:clamp(3.2rem,5vw,4.5rem) clamp(1.3rem,4vw,3rem);scroll-margin-top:90px">
+    <div style="max-width:1120px;margin:0 auto">
+      <div style="display:flex;flex-wrap:wrap;align-items:baseline;gap:.6rem 1rem">
+        <h2 style="font-size:clamp(1.3rem,3vw,1.8rem);font-weight:800;margin:0;line-height:1.55;white-space:nowrap">エキストラチャージ</h2>
+        <span style="font-size:.86rem;font-weight:700;color:#5D6B74">2サム・3サムの割増</span>
+      </div>
+      <p style="color:#5D6B74;font-size:.95rem;margin:.7rem 0 1.4rem;max-width:40em;text-wrap:pretty">組人数による割増は下記のとおりです。3サムの割増はいただいておりません。</p>
+      <div style="background:#fff;border:1px solid #D5DDE0;border-radius:10px;overflow:hidden">
+        <div style="display:grid;grid-template-columns:1.6fr 1fr 1fr 1fr;background:#E6EEF1;font-size:.85rem;font-weight:800;color:#1F4A29">
+          <div style="padding:.9rem 1.1rem">プラン・曜日</div>
+          <div style="padding:.9rem 1.1rem;text-align:right">1サム</div>
+          <div style="padding:.9rem 1.1rem;text-align:right">2サム</div>
+          <div style="padding:.9rem 1.1rem;text-align:right">3サム</div>
+        </div>
+        <div style="display:grid;grid-template-columns:1.6fr 1fr 1fr 1fr;border-top:1px solid #D5DDE0;font-size:.95rem">
+          <div style="padding:1rem 1.1rem;font-weight:700">1R／平日</div>
+          <div style="padding:1rem 1.1rem;text-align:right;font-weight:800">＋2,000円</div>
+          <div style="padding:1rem 1.1rem;text-align:right;color:#5D6B74">なし</div>
+          <div style="padding:1rem 1.1rem;text-align:right;color:#5D6B74">なし</div>
+        </div>
+        <div style="display:grid;grid-template-columns:1.6fr 1fr 1fr 1fr;border-top:1px solid #D5DDE0;font-size:.95rem">
+          <div style="padding:1rem 1.1rem;font-weight:700">1R／土日祝</div>
+          <div style="padding:1rem 1.1rem;text-align:right;color:#5D6B74">受付しかねます</div>
+          <div style="padding:1rem 1.1rem;text-align:right;font-weight:800">＋2,000円</div>
+          <div style="padding:1rem 1.1rem;text-align:right;color:#5D6B74">なし</div>
+        </div>
+        <div style="display:grid;grid-template-columns:1.6fr 1fr 1fr 1fr;border-top:1px solid #D5DDE0;font-size:.95rem">
+          <div style="padding:1rem 1.1rem;font-weight:700">ハーフ・スルー／平日</div>
+          <div style="padding:1rem 1.1rem;text-align:right;font-weight:800">＋2,000円</div>
+          <div style="padding:1rem 1.1rem;text-align:right;color:#5D6B74">なし</div>
+          <div style="padding:1rem 1.1rem;text-align:right;color:#5D6B74">なし</div>
+        </div>
+        <div style="display:grid;grid-template-columns:1.6fr 1fr 1fr 1fr;border-top:1px solid #D5DDE0;font-size:.95rem">
+          <div style="padding:1rem 1.1rem;font-weight:700">ハーフ・スルー／土日祝</div>
+          <div style="padding:1rem 1.1rem;text-align:right;color:#5D6B74">受付しかねます</div>
+          <div style="padding:1rem 1.1rem;text-align:right;font-weight:800">＋1,000円</div>
+          <div style="padding:1rem 1.1rem;text-align:right;color:#5D6B74">なし</div>
+        </div>
+      </div>
+      <ul style="list-style:none;margin:1.1rem 0 0;padding:0;font-size:.87rem;color:#5D6B74;display:grid;gap:.45rem">
+        <li style="padding-left:1rem;position:relative"><span style="position:absolute;left:0">・</span>金額はすべて税込です。</li>
+        <li style="padding-left:1rem;position:relative"><span style="position:absolute;left:0">・</span>早朝・夕暮プラン、追加ハーフにバック割増はございません。</li>
+      </ul>
+    </div>
+  </section>
+
+  <section id="event" style="padding:clamp(3.2rem,5vw,4.5rem) clamp(1.3rem,4vw,3rem);scroll-margin-top:90px">
+    <div style="max-width:1120px;margin:0 auto">
+      <div style="display:flex;flex-wrap:wrap;align-items:baseline;gap:.6rem 1rem">
+        <h2 style="font-size:clamp(1.3rem,3vw,1.8rem);font-weight:800;margin:0;line-height:1.55;white-space:nowrap">イベント</h2>
+        <span style="font-size:.86rem;font-weight:700;color:#5D6B74">競技会・コンペ</span>
+      </div>
+      <p style="color:#5D6B74;font-size:.95rem;margin:.7rem 0 1.4rem;max-width:40em;text-wrap:pretty">月例会やクラブ競技、企業・団体コンペを承っています。参加費や当日の進行、表彰式のご相談はお電話でお受けします。開催予定はイベント・競技会のページでご確認ください。</p>
+      <div style="display:flex;flex-wrap:wrap;gap:.7rem">
+        <a href="events.html" style="display:inline-block;text-decoration:none;font-weight:800;font-size:.95rem;padding:.9rem 1.8rem;border-radius:8px;background:#2F6B3C;color:#fff" style-hover="background:#1F4A29">イベント・競技会を見る</a>
+        <a href="tel:0185-88-8732" style="display:inline-block;text-decoration:none;font-weight:800;font-size:.95rem;padding:.9rem 1.8rem;border-radius:8px;border:2px solid #2F6B3C;color:#2F6B3C" style-hover="background:#EAF2EB">コンペのご相談 0185-88-8732</a>
+      </div>
     </div>
   </section>
 
@@ -227,5 +358,71 @@ a:hover{color:#1F4A29}
   <dc-import name="SiteFooter" hint-size="100%,260px"></dc-import>
 </div>
 </x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;noteUrl&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;https://note.com/noden_akita&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;note連携&quot;},&quot;proxyUrl&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;https://note-rss.dry-surf-609b.workers.dev/?url=&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;note連携&quot;},&quot;maxPlans&quot;:{&quot;editor&quot;:&quot;int&quot;,&quot;default&quot;:6,&quot;min&quot;:3,&quot;max&quot;:12,&quot;tsType&quot;:&quot;number&quot;,&quot;section&quot;:&quot;note連携&quot;}}">
+class Component extends DCLogic {
+  // note のハッシュタグ「#ゴルフプラン」が付いた記事を、お得なプランとして並べる。
+  static TAG = 'ゴルフプラン';
+
+  state = { plans: null };
+
+  get noteUrl() { return this.props.noteUrl ?? 'https://note.com/noden_akita'; }
+
+  componentDidMount() {
+    const rss = this.noteUrl.replace(/\/+$/, '') + '/rss';
+    const proxy = this.props.proxyUrl ?? 'https://note-rss.dry-surf-609b.workers.dev/?url=';
+    fetch(proxy + encodeURIComponent(rss) + '&tag=' + encodeURIComponent(Component.TAG))
+      .then((r) => (r.ok ? r.json() : Promise.reject(r.status)))
+      .then((d) => {
+        // 旧版の中継サーバーは ?tag= を無視して全記事を返す。
+        // 応答にタグのエコーが無い＝絞り込みが効いていないので、0件として扱う。
+        const applied = typeof d.tag === 'string' && d.tag !== '';
+        const items = (applied ? (d.items || []) : []).slice(0, this.props.maxPlans ?? 6).map((it) => {
+          const image = it.thumbnail || (it.enclosure && it.enclosure.link) || '';
+          return {
+            title: it.title || '(無題)',
+            link: it.link || this.noteUrl,
+            date: this._fmt(it.pubDate),
+            // 画像は要素ごと生成する。src に {{ }} を置くと、値が入る前の
+            // 描画で穴の文字列がそのままURLとして読み込まれてしまうため。
+            imageEl: image
+              ? React.createElement('img', {
+                  src: image,
+                  alt: '',
+                  style: { position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover', display: 'block' },
+                })
+              : null,
+            excerpt: this._excerpt(it.description || it.content || ''),
+          };
+        });
+        this.setState({ plans: items });
+      })
+      .catch(() => this.setState({ plans: [] }));
+  }
+
+  _fmt(s) {
+    const raw = (s || '').trim();
+    let d = new Date(raw);
+    if (isNaN(d)) d = new Date(raw.replace(' ', 'T'));
+    if (isNaN(d)) return '';
+    return d.getFullYear() + '.' + String(d.getMonth() + 1).padStart(2, '0') + '.' + String(d.getDate()).padStart(2, '0');
+  }
+
+  _excerpt(html) {
+    const t = html.replace(/<[^>]*>/g, '').replace(/\s+/g, ' ').trim();
+    return t.length > 90 ? t.slice(0, 90) + '…' : t;
+  }
+
+  renderVals() {
+    const plans = this.state.plans;
+    return {
+      plans: plans || [],
+      hasPlans: !!(plans && plans.length),
+      plansEmpty: !!(plans && !plans.length),
+      plansLoading: plans === null,
+      noteUrl: this.noteUrl,
+    };
+  }
+}
+</script>
 </body>
 </html>
